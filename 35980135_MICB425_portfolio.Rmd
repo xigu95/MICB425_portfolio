@@ -1,0 +1,10 @@
+---
+title: "MICB425_portfolio"
+author: "Nai Hsuan Shao (35980135)"
+date: '2018-01-19'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
