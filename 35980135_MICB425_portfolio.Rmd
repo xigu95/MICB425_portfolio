@@ -1,10 +1,29 @@
 ---
 title: "MICB425_portfolio"
 author: "Nai Hsuan Shao (35980135)"
-date: '2018-01-19'
+date: "version `r format(Sys.time(), '%B %d, %Y')`"
 output: html_document
+toc: yes
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+# Table/Links to websites
+Row names | Data 1 | Data 2
+--------- | ------ | ------
+**Row 1**     |   ~~0~~    |    *1*
+**Row 2**   |   ~~1~~    |    *0*
+
+[Links to MICB425 github page](https://github.com/EDUCE-UBC/MICB425)
+
+## Links to images
+![kitten](https://static1.squarespace.com/static/54e8ba93e4b07c3f655b452e/t/56c2a04520c64707756f4267/1493764650017/)
+![50% kitten](image.jpeg){width=50%}
+
+## Code Chunks
+```{r title, message=TRUE, warning=FALSE, fig.width=4}
+#Create 2 lists of numbers
+list1 = c(1,2,3)
+list2 = c(4,5,6)
+
+#Plot list1 vs. list2
+plot(x=list1, y=list2)
 ```
