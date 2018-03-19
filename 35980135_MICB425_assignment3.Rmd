@@ -1,5 +1,5 @@
 ---
-title: "Assignment 3"
+title: "RMarkdown Pretty PDF Challenge"
 author: "Nai Hsuan Shao (35980135)"
 date: "version `r format(Sys.time(), '%B %d, %Y')`"
 output:

@@ -1,0 +1,74 @@
+---
+title: "Evidence_worksheet_01"
+author: "Nai Hsuan Shao (35980135)"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  html_document:
+    toc: true
+mainfont: Arial
+fontsize: 11 pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Evidence Worksheet for "Prokaryotes: The Unseen Majority"
+
+### Learning Objectives
+Describe the numerical abundance of microbial life in relation to ecology and biogeochemistry of Earth systems.
+
+### General Questions
+#### What were the main questions being asked?
+* To give an estimtation of the abundance, turnover rate, carbon content and the diversity of parkoytes in different area and terristrial zone on Earth.
+
+#### What were the primary methodological approaches used?
+To estimate the total number of prokaryotes on earth, the authors investigated several habitats, including:
+
+* Aquatic Environment:
+    + Ocean: The investigator splitted the calculation into continental shelf and upper 200m and deep (>200m) oceanic water, then gathered the estimated cell density at that depth and multiply it by global estimates of sea water volume.
+    + Fresh Water and saline lake: Given the average cell density in fresh water and saline water, the researcher multiplies it by the estimate volume as well.
+    + Polar regions: the researcher used the estimated number of prokaryotes of Antarctic sea based on the study of Delille and Rosiers, then times it by the mean areal extent of seasonal ice. Since they assumed that both polar regions should have the same population size, the researchers times the estimate number by two.
+* Soils:
+    + Forest soils: The researcher used the estimation from detailed direct counts from a coniferous forest ultisol, and believed it to be an representative of forest soil in generals.
+    + Other soils: The researcher used the umplibished field studies of E.A. Paul for cultivated soils
+* Subsurface:
+Both habitat are calculated in similar measure. The researcher creates a depth profile ranges from 0.1m to 4km, because at this depth the average temperature reaches 125ºC, which is close to the upper temperature limit for prokaryotes.
+    + Terrestrial habitat below 8m: Since terrestrial subsurface prokaryoes is limited to unconsolidated sediments, which represent only 20% of the terrestrial subsurface. Two approaches are used to estimate the total number of prokaryotes:
+        + Calculation are based on the average porosity of terristrial subsurface multiply by the total pore space occupied by prokaryotes.
+        + The estimation can also be obtained from ground water data. Based on values from seven sites and four studies, the researcher used the total volume of ground water in the upper 4km of the earth surface times the average number of unattached cells in ground water.
+    + Marine sediments below 10m: the estimated number of prokaryotes sediment are gathered from previous studies.
+* Other Habitat:
+    + Animals: The researcher assumed that most prokaryotes are most abundant on the skin and within the gastrointestinal tract of mammals and birds. Since the organ contents and number of animals are known, the total number of prokayotes within animal can be easily calculated. However, in comparison, the number of prokaryotes on skin are so minute that the researcher decided not to include it in the total estimation.
+    + Leaves: An upper limit for the number of prokaryotes on leaves can be estimated by assuming a dense population cand a high leaf area index. However, the number showed that the maximum number of prokaryoes on leaves is unlikely to exceed the number in soil.
+    + Air: The total number of prokaryotes over land is calculated from previous study.
+    
+To estimate the carbon content of prokaryotes on earth, the authors investigated several habitats, including soil, aquatic systems, and the subsurface:
+
+* Soils and subsurface: The researcher assumed that the cellular carbon is one-half of its dry weight, then multuply it by the total number of prokaryotes obtained from previous study.
+* Aquatic system: The researcher obtained the average cellular carbon from previous studies.
+
+The researcher used previous studys to estimate the carbon assimilation rate at each individual habitat, then by combining the estimation of the rate of carbon consumption by prokayotes to set the upper limit of the carbon turnover rate.
+
+#### Summarize the main results or findings.
+* Number of prokaryotes in aquatic habitats is roughly $12 \times 10^{28}$ and the carbon contents is roughly 2.2 Pg of carbon/prokaryotes.
+* Number of prokaryotes in soil is roughly $26 \times 10^{28}$ and the carbon contents is roughly 26 Pg of carbon/prokaryotes.
+* Number of prokaryotes in oceanic subsurface sediments is roughly $355 \times 10^{28}$ and the carbon contents in this habitat is roughly 303 Pg of carbon/prokaryotes.
+* Number of prokaryotes in oceanic subsurface sediments is roughly $22 \times 10^{28}$ to $250 \times 10^{28}$ and the carbon contents in this habitat is roughly 22 to 215 Pg of carbon/prokaryotes.
+* The total number of prokayotes cells is roughly $415 \times 10^{28}$ to $640 \times 10^{28}$ and the total carbon content is roughly 353 to 546 Pg of carbon/prokaryotes.
+* The total carbon of prokaryotes on earth is approximated 60-100% of the total carbon found in plants. In addition, prokayotes also contain large amount of nitrogen, phospherus, and other essential nutrients.
+* The large population of prokaryotes suggests it is possible to observe frequent mutation events that are rare in labortory.
+* From the study, the researcher concluded that the highest cellular productivity occured in the open ocean, which implies that most of the rare genetic events happened in the population of marine prokaryotes.
+* Since prokaryotes are essemtially asexual, the primary source of genetic diversity is mutations in the genome. Given the enormous potential of prokaryotes to acquire genetic diversity, we may need to change the current taxonomy system.
+
+#### Do new questions arise from the results?
+* Since this is a paper dated back in 1998, does the number still hold? Does the finding in this paper creditable?
+* After almost 20 years have passed, is it possible to use the latest technology to revise the result?
+* If we reconstruct the habitat specification, would the number change?
+* Does the carbon assimilation rate still holds for different habitat? Can we use this number to further understand the carbon cycle on earth?
+* How can we use the diversity of prokaryotes into application, such as phylogentic analysis??
+* For essentuakky asexual, haploid organisms, such as prokaryotes, with such enormous number of potential species, how do we develop another system of txonomy?
+
+#### Were there any specific challenges or advantages in understanding the paper (e.g. did the authors provide sufficient background information to understand experimental logic, were methods explained adequately, were any specific assumptions made, were conclusions justified based on the evidence, were the figures or tables useful and easy to understand)? 
+* How the data were collected or calculated was not described in detail.
+* There was no error calculation, and no statistical inference was made, which suggests that the sample numbers were probably not replicable
+
