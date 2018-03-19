@@ -1,0 +1,83 @@
+---
+title: "ggplot"
+author: "Nai Hsuan Shao (35980135)"
+date: '2018-03-19'
+output:
+  html_document:
+    toc: true
+mainfont: Arial
+fontsize: 11 pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+source("https://bioconductor.org/biocLite.R")
+biocLite("phyloseq")
+library(phyloseq)
+load("phyloseq_object.RData")
+metadata = read.table(file="Saanich.metadata.txt", header=TRUE, row.names=1, sep="\t")
+```
+##Working with data in R
+###Exercise 1
+We have another data table we will be using in up-coming DS Fridays, Saanich.OTU.txt. Import this data as a named object with the correct parameters in R.
+```{r, include=TRUE}
+OTU = read.table(file="Saanich.OTU.txt", header=TRUE, row.names=1, sep="\t")
+```
+### Exercise 2
+Using dplyr, find at what depth(s) methane (CH4) is above 100 nM while temperature is below 10 °C. Print out a table showing only the depth, methane, and temperature data.
+```{r, include=TRUE}
+metadata %>% 
+  filter(CH4_nM >= 100) %>% 
+  filter(Temperature_C <= 10) %>%
+  select(Depth_m, CH4_nM, Temperature_C)
+```
+### Exercise 3
+Convert all variables that are in nM to μM. Output a table showing only the original nM and converted μM variables
+```{r, include=TRUE}
+metadata %>% 
+  select(matches("nM")) -> nM_table
+
+nM_table %>% 
+  mutate(N2O_um = N2O_nM/1000) %>%
+  mutate(Std_N2O_um = Std_N2O_nM/1000) %>%
+  mutate(CH4_um = CH4_nM/1000) %>%
+  mutate(Std_CH4_um = Std_CH4_nM/1000)
+```
+##Plotting data in R
+###Exercise 1
+Plot another nutrient of your choice against depth. Change the points to be purple triangles. 
+```{r, include=TRUE}
+ggplot(metadata, aes(x=SiO2_uM, y=Depth_m))+
+  geom_point(shape=17,color="purple")
+```
+###Exercise 2
+Using dplyr, convert the temperature variable from Celsius to Fahrenheit. Then create a dot plot of temperature in Fahrenheit against depth
+```{r, include=TRUE}
+metadata %>% 
+  mutate(Temperature_F = Temperature_C*9/5+32) %>% 
+  ggplot() + geom_point(aes(x=Depth_m, y=Temperature_F))
+```
+###Exercise 3
+Create a bar plot at a different taxonomic level with more descriptive x- and y-axis labels as well as a title. Use the ggplot cheatsheet to learn the guides needed to change these labels.
+```{r, include=TRUE}
+physeq
+physeq_percent = transform_sample_counts(physeq, function(x) 100 * x/sum(x))
+
+plot_bar(physeq_percent, fill="Domain") + 
+  geom_bar(aes(fill=Domain), stat="identity")+
+  labs(x="Depth of Sample", y="Abundance percentage", title="The abundance of each domain across depth of Saanich Inlet")
+```
+###Exercise 4
+Using ggplot, create a faceted figure showing nutrient concentrations in uM for O2, PO4, SiO2, NO3, NH4, and NO2 by depth. For this, you can use either the metadata table or the phyloseq object.
+```{r, include=TRUE}
+ggplot(metadata %>%
+  select(Depth_m, O2_uM, PO4_uM, SiO2_uM, NO3_uM, NH4_uM, NO2_uM) %>%
+  gather(key = Nutrient, value = uM, -Depth_m), aes(x=Depth_m, y=uM))+
+  geom_point(aes(x=Depth_m, y=uM), stat="identity") +
+  geom_line(aes(x=Depth_m, y=uM)) +
+  theme(legend.position="none")+
+  facet_wrap(~Nutrient, scales="free_y")+
+  theme(legend.position="none")
+```
+
