@@ -8,11 +8,15 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-## Evidence Worksheet for "Prokaryotes: The Unseen Majority"
+## Evidence Worksheet for "Bacterial Rhodopsin Gene Expression"
 
 
 ### Learning Objectives
-Describe the numerical abundance of microbial life in relation to ecology and biogeochemistry of Earth systems.
+* Discuss the relationship between microbial community structure and metabolic diversity
+
+* Evaluate common methods for studying the diversity of microbial communities
+
+* Recognize basic design elements in metagenomic workflows
 
 
 ### General Questions

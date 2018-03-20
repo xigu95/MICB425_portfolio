@@ -19,22 +19,43 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### General Questions
 #### What were the main questions being asked?
-
+* Identify and quantify the nine planetary boundaries that must not be trangressed to prevent irreversible and disastrous environmental change.  
+* Find the balance between economical growth and environment sustainability.
+* What are preconditions for human's industrial and other development?
+* How to maintain the Earth in Holocene state?
 
 
 #### What were the primary methodological approaches used?
-
-
+  The researcher defined the planatary boundaries and its associated threshold to be a crtical value that if crossed, then important subsystems, such as a monsoon system could shift into a new state, often with deleterious or potentially even diasatrous consequences for human. The researcher took a conservative, risk-averse approach to quantify the plantary boundaries, and taking into account the large uncertainties that surround the true position of many thresholds.
+  The researcher did not specify the method used to calculate the boundaries; however, they included the detailed analysis of calculation of the threshold in the [supplemented reading](http://www.stockholmresilience.org/download/18.1fe8f33123572b59ab800012568/pb_longversion_170909.pdf).
+  
+* Climate change: there are at least three reason for this purposed boundary, including:
+    + The current model does not account and significantly underestimate the severity long-term reinforcing feedback processes that further warm the climate.
+    + We need to ensure that the continued existance of the large polar ice sheet.
+    + We have seen may evidence that some of Earth's subsystem are moving out of their stable Holoscene state, which includes rhe retreat of mountain glaciers around the world, and the accelerating rates of sea-level rise during the past 10-15 years.
+* Rate of biodiversity loss: the primary reason for this purposed boundary is that biodiversity loss can have pervasive effects on how the Earth system functions, and biodiversity interacts with several other planetary boundaries. Apparent reduncy is required to maintain an ecosystem's resilience as the ecosystems that depnd on a few or single species for critical functions are vulnerable to disturbances.
+* Nitrogen and phosphorus cycle: the primary reasons for this purposed boundary, includes:
+    + Large amount of reactive nitrogen emission erodes the resilience of important Earth subsystems.
+    + Large scale ocean anoxic events occur when critical thresholds of phosphorus inflow to the ocean are crossed, which will induce mass extinction of marine life.
 
 #### Summarize the main results or findings. 
+  For the past 10,000 years, the planet's environment has been unusally stable, which allows the human civilizations to arise, develop and thrive. However, ever since the Industrial Revolution, comes the era of Anthropocene, in which human activities has been the main driver of global environment change. Without these human activities, the Holocene is expected to continue for at least several thousands of years.
+  There are nine planetary boundaries that define the safe operating space for human's development with respect to the Earth's biophysical subsystems or processes, which includes, Climate change, rate of biodiversity loss, nitrogen cycle, phosphorus cycle, stratospheric ozne depletion, globalfreshwater use, change in land use, atmospheric aerosol loading, and chemical polution. In the paper, the researcher primary focused on three areas:
 
-
+* Climate change: There are two critical threshold for the climate boundary, which are that atmoshperic carbon dioxide concentration should not exceed 350 parts per million by volume and change in radiative forcing  should exceed 1 watts per metre squared.
+* Rate of biodiversity loss: Ideally, a planetary boundary should capture the role of biodiversity in regulating the resilience of systems on Earth, but the current technology cannot grapse such information at an aggregate level, so the researcher proposes an weaker alternative indicator, the extinction rate. The researcher proposes that the extinction rate should be 10 per million species per year.
+* Nitrogen and phosphorus cycle: The critical threshold for amount of N2 removed from the atmosphere for human use should be 35 millions of tonnes per year, and the critical threshold for quantity of P flowing into the oceans should 11 millions of tonnes per year.
 
 #### Do new questions arise from the results?
-
+* Although we are given some thresholds to maintain, how can we achieve these goals? What are some environment policies that should be reinforced?
+* Some of the plantary boundaries have exceeded its threshold, how can we decrease these values?
 
 
 #### Were there any specific challenges or advantages in understanding the paper (e.g. did the authors provide sufficient background information to understand experimental logic, were methods explained adequately, were any specific assumptions made, were conclusions justified based on the evidence, were the figures or tables useful and easy to understand)? 
-
-
+  There were no specific challenges in understanding the paper; however, it would be great if the calculation for determing the threshold is included.
+  
+### Reference
+  Rockstrom, Nature_2009 .pdf
+  
+  
 
