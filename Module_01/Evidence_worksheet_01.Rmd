@@ -53,7 +53,7 @@ The researcher used previous studys to estimate the carbon assimilation rate at 
 * Number of prokaryotes in aquatic habitats is roughly $12 \times 10^{28}$ and the carbon contents is roughly 2.2 Pg of carbon/prokaryotes.
 * Number of prokaryotes in soil is roughly $26 \times 10^{28}$ and the carbon contents is roughly 26 Pg of carbon/prokaryotes.
 * Number of prokaryotes in oceanic subsurface sediments is roughly $355 \times 10^{28}$ and the carbon contents in this habitat is roughly 303 Pg of carbon/prokaryotes.
-* Number of prokaryotes in oceanic subsurface sediments is roughly $22 \times 10^{28}$ to $250 \times 10^{28}$ and the carbon contents in this habitat is roughly 22 to 215 Pg of carbon/prokaryotes.
+* Number of prokaryotes in Terrestrial subsurface sediments is roughly $22 \times 10^{28}$ to $250 \times 10^{28}$ and the carbon contents in this habitat is roughly 22 to 215 Pg of carbon/prokaryotes.
 * The total number of prokayotes cells is roughly $415 \times 10^{28}$ to $640 \times 10^{28}$ and the total carbon content is roughly 353 to 546 Pg of carbon/prokaryotes.
 * The total carbon of prokaryotes on earth is approximated 60-100% of the total carbon found in plants. In addition, prokayotes also contain large amount of nitrogen, phospherus, and other essential nutrients.
 * The large population of prokaryotes suggests it is possible to observe frequent mutation events that are rare in labortory.
