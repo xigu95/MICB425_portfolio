@@ -5,8 +5,6 @@ date: "`r format(Sys.time(), '%B %d, %Y')`"
 output:
   html_document:
     toc: true
-mainfont: Arial
-fontsize: 11 pt
 ---
 ## Evidence Worksheet_02 “Life and the Evolution of Earth’s Atmosphere”
 ### Learning objectives: 
@@ -15,24 +13,66 @@ fontsize: 11 pt
 ### Indicate the key events in the evolution of Earth systems at each approximate moment in the time series.
 If times need to be adjusted or added to the timeline to fully account for the development of Earth systems, please do so.
 
-* 4.6 billion years ago  
-* 4.2 billion years ago  
-* 3.8 billion years ago  
+* 4.6 billion years ago
+    + The Solar System formed
+* 4.4 billion years ago
+    + The oldest minerals known on Earth, zircons at Western Australia.
+* 4.2 billion years ago
+    + Around this time, proto-earth was structed, which spun and tilted the Earth. Some of molten mantle of proto-earth were injected into outer space, which coalesced to formed the Moon.
+    + The Earth started to have present day-night cycle and seasons.
+* 4.0 billion years ago
+    + The oldest rock, Acasta Gneiss was formed and possibly continental rocks were created at this time.
+    + Perhaps water oceans existed.
+* 3.8 billion years ago
+    + The meteorite bombardment was heaviest until about this time, and some sufficiently large to heat the oceans to >110ºC. This gives rise to the theory that life on Earth could be the ejecta from other planets.
+    + Probable that life began before this time
 * 3.75 billion years ago  
 * 3.5 billion years ago  
+    + Geological evidenct shows that is certain that life has been present on Earth at this time.
+    + In rocks there have been many claims of fossils microbial biofilms and stromatolites. Although some of these features can be interpreted equally as non-biological in origin, other possesses all the diagnostic features of biogenic structures.
+    + The large-scale photosynthetic carbon fractionation by the enzyme Rubisco on a global scale.
+    + Cyanobacteria evolved.
+* 3.2 billion years ago
+    + Volcanogenic massive sulphide deposit in Western Australia infers that microbial life was wides spread in the mid-Archaean.
 * 3.0 billion years ago  
+    + Abundant evidence of stromatolites at Steep Rock, Ontario and in Pongola Supergroups, South Africa
 * 2.7 billion years ago  
+    + Well developed stromatolites at this time are found at various places
+    + Biologic lipids at Pilbara, Western Australia suggests that oxygenic photosynthesis was occuring because they found hydrocarbon biomarker, which are characteristic of cyanobacteria.
+    + Steranes, dereived from chemicals characteristics of eukaryotes are also present.
+* 2.3 billion years ago  
+    + Cyanobacter gave rise to atmospheric O2.
+    + Earth's first well-documented glaciation.
 * 2.2 billion years ago  
+    + Redbed existed.
+    + Interpretation of paleosoils suggests oxidizing condition after this time.
 * 2.1 billion years ago
 * 1.3 billion years ago
+    + Earth formed
 * 550,000 years ago
 * 200,000 years ago
-
+    + Rise of Human
 
 ### Describe the dominant physical and chemical characteristics of Earth systems at the following waypoints:  
-* Hadean  
-* Archean  
-* Precambrian  
-* Proterozoic  
-* Phanerozoic  
+* Hadean
+    + Large amount of water vapour was probably present in high atmosphere on Earth, and hydrogen present in the upper atmosphere would have been lost rapidly to space.
+    + After moon-forming impact, an optically thick layer of dust in the high atmosphere.
+    + Perhaps water ocean existed, which were need for creating continental rock.
     
+* Archean
+    + Inorganic carbonate in the rocks shows a C 'heavy' enrichment that is necessary counterpart of the light carbon extracted by the extomsphere.
+    + Carbon occurs in carbonaceous inclusion in apatite, which may be derived from early Archaean plankton.
+    + Rubisco removed about one-fifth of carbon released from the Earth's interior.
+    + Carbonate that is isotopically similar to modern carbonate, which suggests biological activity.
+    + Microbial trapping, binding and precipitation produced fossil microbial biofilms and stromatolites.
+    + Hydrocarbon biomarkers suggested the present of cyanobacteria.
+    + Steranes suggested the present of eukaryotes.
+    + In deep water, mid-ocean ridge volcanism may be more active than today, which will resulted with abundant vent fields including "black smolers" and rich hydrothermal deposits.
+    
+* Precambrian  
+* Proterozoic 
+    + The rise to oxygenic atmosphere.
+    + Snowball Earth, the first documented global glaciation.
+    
+* Phanerozoic  
+    + Warming from Snowball Earth
