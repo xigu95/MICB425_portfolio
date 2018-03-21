@@ -6,7 +6,7 @@ output: html_document
 ---
 ### Problem set_03 “Metagenomics: Genomic Analysis of Microbial Communities”
 #### Learning objectives: 
-Specific emphasis should be placed on the process used to find the answer. Be as comprehensive as possible e.g. provide URLs for web sources, literature citations, etc.  
+* Specific emphasis should be placed on the process used to find the answer. Be as comprehensive as possible e.g. provide URLs for web sources, literature citations, etc.  
 *(Reminders for how to format links, etc in RMarkdown are in the RMarkdown Cheat Sheets)*
 
 #### Specific Questions:

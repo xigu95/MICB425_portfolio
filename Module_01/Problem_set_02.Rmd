@@ -6,18 +6,41 @@ output: html_document
 ---
 ### Problem set_02 “Microbial Engines”
 #### Learning objectives: 
-Discuss the role of microbial diversity and formation of coupled metabolism in driving global biogeochemical cycles.
+* Discuss the role of microbial diversity and formation of coupled metabolism in driving global biogeochemical cycles.
 
 #### Specific Questions:
 * What are the primary geophysical and biogeochemical processes that create and sustain conditions for life on Earth? How do abiotic versus biotic processes vary with respect to matter and energy transformation and how are they interconnected?  
+    + The techtonics and atmospheric photochemical processes are the primary geophysucal processes that allow elements and molecules to interact with each other, and chemical bonds to form and break in a cylical manner.
+    + The biogeochemical processes that create and sustain conditions for life on Earth includes abotic acid/base chemistry and biologically driven redox reactions.
+    + Abiotic acid/base chemistry is based on the transferred of protons without elextrons; however, the biotic process is the successive transferred of elctrons and protons from a relatively limited set of chemical elements, including H, C, N, O, and S. The two processes are interconnect as abiotic chemistry will constantly resupply the essential elements and the biotic process will use the element to create life on Earth.
 
 * Why is Earth’s redox state considered an emergent property?
-  
+    + Earth's redox state is an emergent property because it depends on the feebacks between the evolution of microbial metabolic and geochemical processes.  
 
 * How do reversible electron transfer reactions give rise to element and nutrient cycles at different ecological scales? What strategies do microbes use to overcome thermodynamic barriers to reversible electron flow?  
+    + Forward and reverse reactions required to maintain cyles may used identical or near-identical pwthways.
+    + To demonstrate that reversible electron transfer reactions give rise to element and nutrient cycles at different ecological scales, the author gave an detail example:
+        + Methanogenic Archaea reduced CO~2~ and H~2~ to form methane.
+        + However, if the environment lacks hydrogen, then the reverse process becomes thermodynamically favourable. In this case, Archaea closely related, extant methanogens will use co-opted methanogenic machinery to oxidized the methane.
+    + Typically in one direction, the pathway is oxidative, dissimilatory and exothermic, and the reverse reaction is usally energy consuming. To overcome the energy barrier, the process is sometime catalyzed by diverse, multispecies microbial interactions.
 
-* Using information provided in the text, describe how the nitrogen cycle partitions between different redox “niches” and microbial groups. Is there a relationship between the nitrogen cycle and climate change?   
+* Using information provided in the text, describe how the nitrogen cycle partitions between different redox “niches” and microbial groups. Is there a relationship between the nitrogen cycle and climate change?
+    + Before human's industrial activities, the nitrogen cycle is primary driven microbe's various oxidation and reduction reactions. With the rapidly increasing reliance on fertilizers and a variety of industrial processes including heavy use of fossil fuel, human greatly increased the amount of reactive nitrogen to the ocean and atmosphere. With the increasing emmision of various nitrogen, including NO~2~^-^, NO~3~^-^, and ammonia, induces the probability of acid rain. In addition, nitrous oxide a potent greenhouse gas, which increase the global temperature.
+    + In the presence of oxygen, the NH~4~^+^ can be oxidized to nitrate in a two-stage pathway:
+        + A specific group of Bacteria or Archaea will oxidize ammonia to NO~2~^-^
+        + A different suite of nitrifying Bacteria will subsequently oxidize NO~2~^-^ to NO~3~^-^
+    + The chemoautoroph uses the small differences in redox potential in the oxidation reactions to reduce CO~2~ to organic matter
+    + In the absence of oxygen, an opportunistic mircrobes uese NO~2~^-^ and NO~3~^-^ as electron accecptors in the anaerobic oxidation of organic matter, which produce N~2~, thereby closing the N cycle.
 
 * What is the relationship between microbial diversity and metabolic diversity and how does this relate to the discovery of new protein families from microbial community genomes?  
+    + The metabolic pathways have evolved to utilize substrates that are the end products of other type of microbial metabolism. Typically, the reduction and oxidation are segrgated in different organisms.
+    + Some energy transduction processes can be highly complex. For example, oxygenic photosynthesis involves nire than 100 genes to make several macromolecular complexes.
+    + In the microbial world, not only individual genes but also the entire metabolic pathways central to specific biogeochenical cycles appear to be frequently horizontally transfer. The environmental selective pressures serve as the main incentive to retain important horizontally transferred genes, which in turns will induce the radiation of diverse biogeochemical reactions among different organisms.
+    + The microbial community genome sequencing led to the hypothesis that the vast majority of unexplored sequence space appears to encompass two categories of gene: the carry-on genes, and a set of positively selected environment-specific gene suites tuned to very particular habitats and organisms.
 
 * On what basis do the authors consider microbes the guardians of metabolism?  
+    + Most microbes retain the core planetary gene set, so in the case of a specific operational taxonomic unit does not survive an environmental pertubation, there is a strong chance that the functional role of that unit can still be carried out by other organism.
+    + The researcher believed that microbes can be viewed as vessels that ferry metabolic machines through strong environmental perturbations.
+    
+#### Reference:
+Falkowski, et al.
