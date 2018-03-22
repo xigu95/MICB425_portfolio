@@ -1,36 +1,75 @@
 ---
 title: "Problem set 01"
-author: "Student Name (Student ID)"
+author: "Nai Hsuan Shao (35980135)"
 date: "version `r format(Sys.time(), '%B %d, %Y')`"
 output: html_document
 ---
-### Problem set 01
-#### Learning objectives: 
-Describe the numerical abundance of microbial life in relation to the ecology and biogeochemistry of Earth systems.
+### Learning objectives: 
+* Describe the numerical abundance of microbial life in relation to the ecology and biogeochemistry of Earth systems.
 
-#### Specific Questions:
-* What are the primary prokaryotic habitats on Earth and how do they vary with respect to their capacity to support life? Provide a breakdown of total cell abundance for each primary habitat from the tables provided in the text.  
+### Specific Questions:
+* What are the primary prokaryotic habitats on Earth and how do they vary with respect to their capacity to support life? Provide a breakdown of total cell abundance for each primary habitat from the tables provided in the text.
 
+    The primary prokaryotic habitats include aquatic habitat, soil, oceanic and terrestrial subsurface.
+    + Aquatic habitat has roughly $12 \times 10^{28}$ prokaryotes cells
+    + Soil has roughly $26 \times 10^{28}$ prokaryotes cells
+    + Oceanic subsurface has roughly $22 \times 10^{28}$ - $250 \times 10^{28}$ prokaryotes cells
+    + Terrestrial subsurface has roughly $415 \times 10^{28}$ - $640 \times 10^{28}$ prokaryotes cells
+    
 * What is the estimated prokaryotic cell abundance in the upper 200 m of the ocean and what fraction of this biomass is represented by marine cyanobacterium including Prochlorococcus? What is the significance of this ratio with respect to carbon cycling in the ocean and the atmospheric composition of the Earth?  
 
-* What is the difference between an autotroph, heterotroph, and a lithotroph based on information provided in the text?  
+    The estimated prokaryotic cell abundance in the upper 200 m of the ocean is $3.6 \times 10^{28}$, and about $\frac{4 \times 10^{4}}{5 \times 10^{5}} = 8$% of this biomass is represnted by marine cyanobacterium including Prochlorococcus. Since marine cyanobacterium is autotrophic, they have a higher turnover rate than marine heterotroph, which implies they may be the primary source of carbon cyling in the open ocean. Since when a prokaryotic cells decompose, it not only release the carbon content, but also release other nutrients, including nitrogen and phospherus, which can diffuse into the atmosphere. 
+    
+* What is the difference between an autotroph, heterotroph, and a lithotroph based on information provided in the text?
 
+    + Autotroph is an organism that lives abundantly in the continental shelf and the upper 200m of the open ocean.
+    + Heterotroph is an organism that can live above or below 200m of the open ocean; however, the population size suggests that over $\frac{8.2 \times 10^{28}}{8.2 \times 10^{28} + 3.6 \times 10^{28}} = 69$% heterotroph prefers to live below 200m.
+    + Lithotroph is seldomly mentioned in this paper, which is probably because lithotroph belong to either the domain bacteria or the domain archaea.
+    
 * Based on information provided in the text and your knowledge of geography what is the deepest habitat capable of supporting prokaryotic life? What is the primary limiting factor at this depth?  
 
-* Based on information provided in the text your knowledge of geography what is the highest habitat capable of supporting prokaryotic life? What is the primary limiting factor at this height?  
+    The deepest habitat capable of supporting prokaryotic life is 4km marine or terrestrial sediment, and the primary limiting factor at this depth is because the average temperature at this depth reaches 125ºC, which is close to the upper temperature limit for prokaryotic life.
+  
+* Based on information provided in the text your knowledge of geography what is the highest habitat capable of supporting prokaryotic life? What is the primary limiting factor at this height?
 
-* Based on estimates of prokaryotic habitat limitation, what is the vertical distance of the Earth’s biosphere measured in km?  
+    The highest habitat capable of supporting prokaryotic life would be the atmosphere, and prokaryotes has been detected at altitude as high as 57-77km; however, the airborne prokaryotes seem to have very low population size. Although it is not mentioned in the paper, the student believes that the primary limiting factor would be low temperature, sparse nutrients (they are likely to be scattered in the atmosphere), and radiation from the sun.
+
+* Based on estimates of prokaryotic habitat limitation, what is the vertical distance of the Earth’s biosphere measured in km?
+
+    Since prokaryotes can live as high as 59-77km and as low as 4km, the vertical distance of the Earth's biosphere would be 63-81km.
 
 * How was annual cellular production of prokaryotes described in Table 7 column four determined? (Provide an example of the calculation)
 
-```{r}
-37+90
+    The annual cellular production of prokaryotes is determined by dividing the population size of a habitat(second column) by its turnover time in year (third column divided by 365, the number of days in a year). For example,
+```{r, include=TRUE}
+# To estimate the annual cellular production of prokaryotes in subsurface habitat:
+(4.9*10^30)/((5.3*10^5)/365)
 ```  
 
-* What is the relationship between carbon content, carbon assimilation efficiency and turnover rates in the upper 200m of the ocean? Why does this vary with depth in the ocean and between terrestrial and marine habitats?  
+* What is the relationship between carbon content, carbon assimilation efficiency and turnover rates in the upper 200m of the ocean? Why does this vary with depth in the ocean and between terrestrial and marine habitats? 
+
+    The carbon content in the upper 200m of the open ocean is calculated by multiplying the total numer of prokaryotes cell by the average carbon content per cell. The researcher used the carbon content and the carbon assimilation efficiency to set the upper limit of turnover rate at this habitat. The relationship varies with depth and between different habitat because the species composition of the populations are different, and not all carbon content are primary consumed by prokaryotes at different site.
 
 * How were the frequency numbers for four simultaneous mutations in shared genes determined for marine heterotrophs and marine autotrophs given an average mutation rate of 4 x 10-7 per DNA replication? (Provide an example of the calculation with units. Hint: cell and generation cancel out)  
 
-* Given the large population size and high mutation rate of prokaryotic cells, what are the implications with respect to genetic diversity and adaptive potential? Are point mutations the only way in which microbial genomes diversify and adapt?  
+    Given an average mutation rate of $4 \times 10^{-7}$ per DNA replication, to determine the frequency number for four simultaneous mutations in shared gene for marine heterotroph and autotroph, the student first convert the annual growth rate to hour growth rate, then divide the inversed result by the mutation rate 4 times. For example,
+```{r, include=TRUE}
+# To estimate the frequency numbers for four simultaneous mutations in shared genes determined for marine autotroph:
+# First convert the annual growth rate of this habitat
+mutation_rate <- 4*10^-7
+annual_growth <- 7.1*10^29
+hour_in_a_year <- 365*24
+annual_growth/hour_in_a_year -> hour_growth
+# Inverse the hour growth rate
+1/hour_growth -> inverse_growth
+# Divided by 4 times of mutation rate
+inverse_growth/(mutation_rate)^4
+``` 
+* Given the large population size and high mutation rate of prokaryotic cells, what are the implications with respect to
+genetic diversity and adaptive potential? Are point mutations the only way in which microbial genomes diversify and adapt? 
 
-* What relationships can be inferred between prokaryotic abundance, diversity, and metabolic potential based on the information provided in the text?  
+    Given the large population size and high mutation rate of prokaryotic cells, it is probable that mutation events that are rare in the laboratory could occur frequently in nature, which allows the population of prokaryotic cell to be extremely diverse. Since the population is incredibly diverse, the adaptive potential of prokaryotes should increase.
+
+* What relationships can be inferred between prokaryotic abundance, diversity, and metabolic potential based on the information provided in the text?
+
+    Since the total number of prokaryotes is enormous, the vast abundance of prokaryotes population implies that mutation events may occur quite frequently, which can be the major source genetic diversity because prokaryotes are asexual and haploid organism. Since the functional gene diversity and the structure of the microbial community will further influence the habitat's metabolic potential, the diverse prokayotes population suggests enormous metabolic potential.
