@@ -1,6 +1,6 @@
 ---
 title: "Problem Set_03"
-author: "Student Name (Student ID)"
+author: "Nai Hsuan Shao (35980135)"
 date: "version `r format(Sys.time(), '%B %d, %Y')`"
 output: html_document
 ---
@@ -11,15 +11,42 @@ output: html_document
 
 #### Specific Questions:
 * How many prokaryotic divisions have been described and how many have no cultured representatives (microbial dark matter)?
-  
+    + Prokaryotes can be classified into two domains: Bacteria and Archaea. According to Solden et. al in [The bright side of microbial dark matter: lessons learned from the uncultivated majority](https://www.sciencedirect.com/science/article/pii/S1369527416300558), there is at least 89 bacterial phyla and 20 archael phyla that are recognized by small subunit ribosomal RNA databases.
+    + Microbiologist refers to phyla that is composed fo exclusively of uncultured representatives as microbial dark matter. In the article, [Mining the microbial dark matter](https://www.nature.com/news/mining-the-microbial-dark-matter-1.17774), Lok stated that about 85-99% of prokaryotes cannot yet be grown in the lab.
 
 * How many metagenome sequencing projects are currently available in the public domain and what types of environments are they sourced from?
-  
-
+    + According to Mitchel et al. in [EBI Metagenomics in 2017: enriching the analysis of microbial communities, from sequence reads to assemblies](https://academic.oup.com/nar/article/46/D1/D726/4561650), EBI are currently hosting over 100,000 publicpublicly available datasets that are sampled from a wide range of environments, ranging from insect digestive tracts to hydrothermal vents.
+    + Another commonly used platform [MG-RAST](http://www.mg-rast.org/) has processed over 324,325 datasets and the owner are free to decide whether to share the dataset for public download. The types of environments that the data sourced from were not specified.
+    + [Integrated Microbial Genomes (IMG) system ](https://img.jgi.doe.gov/cgi-bin/m/main.cgi) hosted 11651 samples. They are sampled from terrestrial, aquatic and air environments.
+    
 * What types of on-line resources are available for warehousing and/or analyzing environmental sequence information (provide names, URLS and applications)?  
+    + According to Huson et al. in [Introduction to the Analysis of Environmental Sequences: Metagenomics with MEGAN](https://link.springer.com/protocol/10.1007%2F978-1-61779-585-5_17), we can use the MetaGenome Anaylyzer program (MEGAN) to analyze the taxonomic and functional content of a single dataset.
+    + According to [Web Resources for Metagenomics Studies](https://www.sciencedirect.com/science/article/pii/S1672022915001424), some common software tools for environmental metagenomic includes:
+        + [MG-RAST](https://metagenomics.anl.gov/)
+        + [IMG/M](http://img.jgi.doe.gov/m)
+        + [METAREP](http://jcvi.org/metarep/)
+        + [CoMet](http://comet.gobics.de/)
+        + [METAGENassist](http://www.metagenassist.ca/METAGENassist/)
+        + [MetaABC](http://metaabc.iis.sinica.edu.tw/)
+        + [MyTaxa](http://enve-omics.ce.gatech.edu/mytaxa/)
+        + [metaMicrobesOnline](http://meta.microbesonline.org/)
+        + [EBI Metagenomics](https://www.ebi.ac.uk/metagenomics/)
+        + [CAMERA](http://camera.calit2.net/)
+        + [METAVIR](http://metavir-meb.univ-bpclermont.fr/)
+        + [VIROME](http://virome.dbi.udel.edu/)
+    + Some of the built in annotation pipelines includes SEED subsystem, COG, KO, NOG, eggNOG, M5RNA, KEGG, TrEMBL, SEED, PATRIC, SwissProt, GenBank, RefSeq, KOG, KEGG, Pfam, TIGRfam, TIGR, MetaCyc, GO.
 
 * What is the difference between phylogenetic and functional gene anchors and how can they be used in metagenome analysis?   
+    + According to Krause et. al in [Phylogenetic classification of short environmental DNA fragments](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2367736/), phylogenetic anchor is 6S rRNA, 18S rRNA or other slowly evolving marker genes that can be used to predict the taxonomic origins of environmental genomic fragments and [Jones et. al](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2533232/) stated that functional gene anchor is the functional equivalent of phylogenetic anchors.
+
 
 * What is metagenomic sequence binning? What types of algorithmic approaches are used to produce sequence bins? What are some risks and opportunities associated with using sequence bins for metabolic reconstruction of uncultivated microorganisms?  
+    + According to Sedlar et. al in [Bioinformatics strategies for taxonomy independent binning and visualization of sequences in shotgun metagenomics
+Author links open overlay panel](https://www.sciencedirect.com/science/article/pii/S2001037016300678), since the output of metagonimc sequencing is a mixture of short DNA fragments, or contigs, the process of clustering and assigning contigs into operational taxonomic units is called binning.
+    + According to Leung et al. in [A robust and accurate binning algorithm for metagenomic sequences with arbitrary species abundance ratio](https://academic.oup.com/bioinformatics/article/27/11/1489/219339), there are two type of traditional binning algorithm:
+        + Similarity based: Similarity-based method aligns individual DNA fragment to a known reference genome then each fragment is assigned to the taxonomic class of the similar reference genome. However, since this method required a known reference genome and given that <1% of microbes have been cultured and sequence, the accuracy of this method is usally limited.
+        + Composition based: composition-based method clusters individual DNA fragment in a supervised or semi-supervised manner using generic features such as genome structure or composition. Like in similarity-based method, the accuracy of the result is also limited because of the low availability and reliabitlity of the taxonomic markers.
+        
+* Is there an alternative to metagenomic shotgun sequencing that can be used to access the metabolic potential of uncultivated microorganisms? What are some risks and opportunities associated with this alternative?
+    + According to Poretsky et al. in [Strengths and Limitations of 16S rRNA Gene Amplicon Sequencing in Revealing Temporal Microbial Community Dynamics](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3979728/), an alternative to metagenomic shotgun sequencing could be 16S Amplicon Sequencing. According to Ranjan et al. in [Analysis of the microbiome: Advantages of whole genome shotgun versus 16S amplicon sequencing](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4830092/), the advantage of this sequencing method is that it is cost-effective, downstream data analysis has well established pipleines and there are many archieved data available to use as reference genome. However, the downside of this method is that it can only effectively classify fragments at phyla or genera level, whereas whole genome shotgun approaches can easily reaches species level.
 
-* Is there an alternative to metagenomic shotgun sequencing that can be used to access the metabolic potential of uncultivated microorganisms? What are some risks and opportunities associated with this alternative?  
