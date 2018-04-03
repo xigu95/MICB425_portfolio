@@ -21,22 +21,53 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### General Questions
 #### What were the main questions being asked?
-
-
+* Describe the various specific functions and physiological roles of diverse marine microbial PRs
+* Characterize the PR photosystem structure and function
 
 #### What were the primary methodological approaches used?
-
-
+* Fosmid Library:
+    + Used previus described HOT-10m fosmid library that contains DNA collected from 10 m below the surface at ALOHA station of the Hawaii Ocean Time series.
+* Screening For PR Expression:
+    + By using a Q-PixII robot to prepare the HOT_10m clones on a Performa II filter, in which the filter was used to facilitate the visual detection of color against the white background.
+* In Vitro Transposition and Full Fosmid Sequencing:
+    + Fosmid clones to be characterized were submitted to random in vitro transpostition by using the EZ-Tn5 kan-2 insertion kit.
+    + Colour phenotype of individual Tn5-insertion clones was analyzed on LB plates.
+    + DNA sequencing off the Tn5 ends was performed by KAN-2 FP-1 and KAN-2 RP-1 primers, a BigDye version 3.1 cycle sequencing kit, ABI Prism 3700 DNA analyzer
+    + DNA sequence was assembled by using Sequencher version 4.5 annotated with FGENESB and Artemis version 6.
+* Carotenoid Extraction:
+    + All extraction steps were performed in darkness or low light:
+        + The desired clones were diluted and inbuated overnight
+        + Cells were harvest through centrifugation and rinsing with salt solution.
+        + Cells were centrifuged again then the pelleted was filtered through ashed silica gel. The end product was concentrated by evaporation under dry N~2~.
+* HPLC Analysis:
+    + Adapted Barua and Olson's reverse phade method to perform chromatographic separation and analysis of carotenoid.
+    Carotenoid were identified by comparing absorbance spectra dn retention times with authentic standards.
+* Proton-Pumping Experiment:
+    + Clones ere streaked on 15-cm LB agar plates then resuspended in 20ml of salt solution, rinsed twice, and adjusted to an A~600~ of 0.5-0.7.
+    + The cell suspension was placed in an RPC-100 photosynthetic chamber, and a 160-watt halogen lamp was placed 4 cm from the chamber as light source.
+* ATP Measurement:
+    + ATP was measured by using a luciferase-based assay.
+    + ATP standard curve was used to calculate the concentration of ATP in the samples.
 
 #### Summarize the main results or findings. 
-
-
+* Out of 12,280 clones of HOT_10m fosmid library, three oranges colonies were identified as potential PR-expressing clones.
+    + All three showed no pigmentation in the absence of the high-copy number inducer; however, they displayed orange phynoyupt in the absence of L-retinal when induced high copy number.
+      + HF10_19P19 clones revealed the presence of a PR gene near the fosmid vector junction.
+      + Two clones, HF10_25F10 and HF10_19P19 were analyzed further for PR photosysten gene expression and function.
+          + Both clones exhibited highest identity to other PR-containing BAC clones from Alphaproteobacteria from the Mediterranean and Red Seas.
+          + HF10_10P19 PR-infrred protein sequence was most similar to a homologue from another environmental BAC, MedeBAC66A03, whereas HF10_25F10 was most similar to another BAC clones, RED17H08.
+          + Both PR genes encoded proteins with a glutamine residue at postion 105, which is a trait for blue light-absorbing PRs.
+          + Adjacent to the PR gene in both clones was a predicted six gene operon encoding putative enzymes involved in B-carotene and retinal biosynthesis. The siz genes include crtE, crtI, crtB, crtY, blh, and idi.
+          + Apart from the PR and putative B-carotene and retinal biosynthesis operson, no other gens were shared between the two PR-containing fosmid.
+      + HF10_10P19 cells carrying the intact vector were organce when grown in the presence of arabinose, consistent with the expression of a blue-adapted retinal-PR complex.
+      + The HPLC analysis also revealed the presence of retinal in cell extractsm demonstratin gthat clone HF10_10P19 contained all gene required for retinal biosynthesis.
+      + Identical pigmentation phenotypes were observed with insertions in the corresponding genes of the other PR photosystem clone, HF10_25F10.
+      + Both fosmid independently expressed a functional PR with light-activated proton-translocating activity.
+      + H^+^-ATP synthase is indeed responsible for the light-activated ATP increases we observed in PR^+^ cells.
 
 #### Do new questions arise from the results?
-
+* I did not find any new questions from this paper.
 
 
 #### Were there any specific challenges or advantages in understanding the paper (e.g. did the authors provide sufficient background information to understand experimental logic, were methods explained adequately, were any specific assumptions made, were conclusions justified based on the evidence, were the figures or tables useful and easy to understand)? 
-
-
-
+* The researcher expected the reader to have detail understanding of specific PR photosystem's gene as well as methods of scientific experiment.

@@ -78,7 +78,7 @@ candy_data %>%
 For your community:
 
 * Construct a table listing each species, its distinguishing characteristics, the name you have given it, and the number of occurrences of the species in the collection.
-* Ask yourself if your collection of microbial cells from seawater represents the actual diversity of microorganisms inhabiting waters along the Line-P transect. Were the majority of different species sampled or were many missed? 
+* Ask yourself if your collection of microbial cells from seawater represents the actual diversity of microorganisms inhabiting waters along the Line-P transect. Were the majority of different species sampled or were many missed?
  
 #### Part 2: Collector's curve
 To help answer the questions raised in Part 1, you will conduct a simple but informative analysis that is a standard practice in biodiversity surveys. This analysis involves constructing a collector's curve that plots the cumulative number of species observed along the y-axis and the cumulative number of individuals classified along the x-axis. This curve is an increasing function with a slope that will decrease as more individuals are classified and as fewer species remain to be identified. If sampling stops while the curve is still rapidly increasing then this indicates that sampling is incomplete and many species remain undetected. Alternatively, if the slope of the curve reaches zero (flattens out), sampling is likely more than adequate.
@@ -118,7 +118,11 @@ For your sample:
 
 * Create a collector's curve for your sample (not the entire original community).
 * Does the curve flatten out? If so, after how many individual cells have been collected?
+
+The curve did flatten out after 100 cells have been collected.
 * What can you conclude from the shape of your collector's curve as to your depth of sampling?
+
+The collector curver increased in a radial function, and it gets harder to find a new species as number of sample collected.
 
 #### Part 3: Diversity estimates (alpha diversity)
 Using the table from Part 1, calculate species diversity using the following indices or metrics.
@@ -221,8 +225,10 @@ ori_simpson=1 / (m_m_green^2 + m_m_red^2 + m_m_blue^2 + m_m_yellow^2 + m_m_brown
 The higher the value is, the greater the diversity. The maximum value is the number of species in the sample, which occurs when all species contain an equal number of individuals. Because the index reflects the number of species present (richness) and the relative proportions of each species with a community (evenness), this metric is a diveristy metric. Consider that a community can have the same number of species (equal richness) but manifest a skewed distribution in the proportion of each species (unequal evenness), which would result in different diveristy values.
 
 * What is the Simpson Reciprocal Index for your sample?
+
 19.4712643678161
 * What is the Simpson Reciprocal Index for your original total community?
+
 22.1871802588023
 
 ##### Richness: Chao1 richness estimator
@@ -251,9 +257,12 @@ ori_chao1 = S_obs+a^2/(2*b)
 ```
 
 * What is the chao1 estimate for your sample?
+
 26.195652173913
 * What is the chao1 estimate for your original total community?
+
 32
+
 #### Part 4: Alpha-diversity functions in R
 We've been doing the above calculations by hand, which is a very good exercise to aid in understanding the math behind these estimates. Not surprisingly, these same calculations can be done with R functions. Since we just have a species table, we will use the `vegan` package. You will need to install this package if you have not done so previously. 
 
@@ -305,24 +314,26 @@ In Project 1, you will also see functions for calculating alpha-diversity in the
 For your sample:
 
 * What are the Simpson Reciprocal Indices for your sample and community using the R function?
+
 22.18718 and 19.47126
 * What are the chao1 estimates for your sample and community using the R function?
+
 26 and 32
     + Verify that these values match your previous calculations.
+      
+      Yes, this matched the previous calculation.
 
 #### Part 5: Concluding activity
 If you are stuck on some of these final questions, reading the [Kunin et al. 2010](https://www.ncbi.nlm.nih.gov/pubmed/19725865) and [Lundin et al. 2012](https://www.ncbi.nlm.nih.gov/pubmed/23760801) papers may provide helpful insights. 
 
 * How does the measure of diversity depend on the definition of species in your samples?
-  Depending on how grain-fined.
-  -Species Definition Rule:
-    - Sampling method should be consistent in respect to the environment
-    - Define clearly "species" -> 97%
-    - Use the same region for 16sRrna analysis
-    - Same primer
-    - Use curatect database
-    - Processing sample, ie, some methods may not lyse the entire population
-    
-* Can you think of alternative ways to cluster or bin your data that might change the observed number of species?
 
+  Depending on how specific we define the species diversity, the diversity will increase or decrease.
+
+* Can you think of alternative ways to cluster or bin your data that might change the observed number of species?
+   
+   If we don't seperate the candy by colour, the observed number of species will decrease.
+   
 * How might different sequencing technologies influence observed diversity in a sample?
+
+  The different sequencing technologies will have different measure to define OTU; therefore, it will identify different number of species which in turn will infuence the observed diversity in a sample.
