@@ -1,0 +1,15 @@
+# Functional analysis, Nitrous-oxide reductase:
+
+Placement weight 0.09%: Assignment of query to the lowest common ancestor of Pedobacter_saltans_DSM_12145 |  (5), Prevotella_denticola_F0289 |  (13), Riemerella_anatipestifer_ATCC_11845_=_DSM_15868 |  (23), Maribacter_sp._HTCC2170 |  (31), Haliscomenobacter_hydrossis_DSM_1100 |  (35), Flavobacteriaceae_bacterium_3519-10 |  (36), Dyadobacter_fermentans_DSM_18053 |  (46), Cellulophaga_algicola_DSM_14237 |  (59), Gemmatimonas_aurantiaca_T-27 |  (63), Ignavibacterium_album_JCM_16511 |  (65), Gramella_forsetii_KT0803 |  (66), Hydrogenobacter_thermophilus_TK-6 |  (75), Persephonella_marina_EX-H1 |  (78), Marivirga_tractuosa_DSM_4126 |  (91), Robiginitalea_biformata_HTCC2501 |  (103), Leptospira_biflexa_serovar_Patoc_strain_'Patoc_1_(Ames)' |  (113), Bac22 |  (114), SHBH1141 |  (118) and ZA3312c |  (120).
+Placement weight 0.15%: Assignment of query to the lowest common ancestor of Hydrogenobacter_thermophilus_TK-6 |  (75) and Persephonella_marina_EX-H1 |  (78).
+Placement weight 0.61%: Assignment of query to ZA3312c |  (120).
+Placement weight 66.33%: Assignment of query to SUP05 |  (119).
+Placement weight 28.58%: Assignment of query to SHBH1141 |  (118).
+Placement weight 0.47%: Assignment of query to SAR324 |  (117).
+Placement weight 0.07%: Assignment of query to Robiginitalea_biformata_HTCC2501 |  (103).
+Placement weight 0.49%: Assignment of query to Rhodothermus_marinus_DSM_4252 |  (74).
+Placement weight 0.43%: Assignment of query to Maribacter_sp._HTCC2170 |  (31).
+Placement weight 0.02%: Assignment of query to Leptospira_biflexa_serovar_Patoc_strain_'Patoc_1_(Ames)' |  (113).
+Placement weight 1.01%: Assignment of query to GAMMA |  (116).
+Placement weight 0.51%: Assignment of query to EPSILON |  (115).
+Placement weight 1.25%: Assignment of query to Cellulophaga_algicola_DSM_14237 |  (59).

@@ -1,0 +1,11 @@
+# Functional analysis, Nitrous-oxide reductase:
+
+Placement weight 23.00%: Assignment of query to ZA3312c |  (120).
+Placement weight 12.68%: Assignment of query to SUP05 |  (119).
+Placement weight 10.10%: Assignment of query to SHBH1141 |  (118).
+Placement weight 6.07%: Assignment of query to SAR324 |  (117).
+Placement weight 18.34%: Assignment of query to Rhodothermus_marinus_DSM_4252 |  (74).
+Placement weight 5.38%: Assignment of query to Maribacter_sp._HTCC2170 |  (31).
+Placement weight 0.38%: Assignment of query to GAMMA |  (116).
+Placement weight 7.22%: Assignment of query to EPSILON |  (115).
+Placement weight 16.84%: Assignment of query to Cellulophaga_algicola_DSM_14237 |  (59).

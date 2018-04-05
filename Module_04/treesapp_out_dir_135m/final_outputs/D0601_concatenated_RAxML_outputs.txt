@@ -1,0 +1,13 @@
+# Functional analysis, Nitrous-oxide reductase:
+
+Placement weight 0.72%: Assignment of query to the lowest common ancestor of Pyrobaculum_sp._1860 |  (50), Ferroglobus_placidus_DSM_10642 |  (60) and Pyrobaculum_calidifontis_JCM_11548 |  (84).
+Placement weight 5.14%: Assignment of query to ZA3312c |  (120).
+Placement weight 19.40%: Assignment of query to SUP05 |  (119).
+Placement weight 16.40%: Assignment of query to SHBH1141 |  (118).
+Placement weight 11.36%: Assignment of query to SAR324 |  (117).
+Placement weight 5.71%: Assignment of query to Rhodothermus_marinus_DSM_4252 |  (74).
+Placement weight 5.49%: Assignment of query to Maribacter_sp._HTCC2170 |  (31).
+Placement weight 15.22%: Assignment of query to GAMMA |  (116).
+Placement weight 3.19%: Assignment of query to EPSILON |  (115).
+Placement weight 16.06%: Assignment of query to Cellulophaga_algicola_DSM_14237 |  (59).
+Placement weight 1.29%: Assignment of query to Bac22 |  (114).
