@@ -1,0 +1,12 @@
+# Functional analysis, Nitrous-oxide reductase:
+
+Placement weight 0.32%: Assignment of query to the lowest common ancestor of Dechloromonas_aromatica_RCB |  (76), Dechlorosoma_suillum_PS |  (101) and Candidatus_Accumulibacter_phosphatis_clade_IIA_str._UW-1 |  (107).
+Placement weight 1.02%: Assignment of query to ZA3312c |  (120).
+Placement weight 2.40%: Assignment of query to SUP05 |  (119).
+Placement weight 8.79%: Assignment of query to SHBH1141 |  (118).
+Placement weight 0.07%: Assignment of query to Rhodothermus_marinus_DSM_4252 |  (74).
+Placement weight 0.43%: Assignment of query to Pseudovibrio_sp._FO-BEG1 |  (112).
+Placement weight 0.10%: Assignment of query to Maribacter_sp._HTCC2170 |  (31).
+Placement weight 5.20%: Assignment of query to GAMMA |  (116).
+Placement weight 0.05%: Assignment of query to EPSILON |  (115).
+Placement weight 81.62%: Assignment of query to Bac22 |  (114).
