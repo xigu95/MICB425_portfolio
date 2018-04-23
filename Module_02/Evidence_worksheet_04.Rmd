@@ -10,7 +10,6 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 ## Evidence Worksheet for "Bacterial Rhodopsin Gene Expression"
 
-
 ### Learning Objectives
 * Discuss the relationship between microbial community structure and metabolic diversity
 
