@@ -988,4 +988,944 @@ If you are stuck on some of these final questions, reading the [Kunin et al. 201
 11.	Wagner, Andreas, and Nicole De La Chaux. “Distant Horizontal Gene Transfer Is Rare for Multiple Families of Prokaryotic Insertion Sequences.” Molecular Genetics and Genomics, vol. 280, no. 5, 2008, pp. 397–408., doi:10.1007/s00438-008-0373-y.
 12.	Falkowski, P. G., et al. “The Microbial Engines That Drive Earths Biogeochemical Cycles.” Science, vol. 320, no. 5879, 2008, pp. 1034–1039., doi:10.1126/science.1153213.
 
-# Module 4
+## Project 1: "Depth and oxygen-dependent distribution of the family Oceanospirillaceae in the Saanich Inlet"
+author: "by Paulina Beskrovnaya (38929148), Zack Dang (22481148), Jenny He (25889149), Julia Pierce (24366429), Nai Hsuan Shao (35980135), CK Wong"
+
+### Abstract
+Saanich Inlet, a saltwater fjord, offers a unique opportunity to study changes in microbial communities throughout the water column due to the pronounced redox gradient resulting from the restricted water flow and influx of nutrients. Sampling at multiple depths throughout the inlet, biomass is collected and the V4-V5 region of the 16s rRNA is sequenced and processed using both mothur and QIIME2. Overall community structure and structure of  the family Oceanospirillaceae are then studied with changing depth and oxygen concentration. Analysis using mothur-processed data and QIIME2-processed data reveal that the abundance of  Oceanospirillaceae changes significantly with depth and oxygen concentration. More than half of the assigned OTUs for Oceanospirillaceae were significant, compared to only four significant ASVs.  Answers to the assigned questions generally displayed overlapping similarities using both pipelines with minor differences in the taxa assignments and calculation of statistical values (Chao1 and Shannon Diversity Index) across the depths. 
+
+### Introduction 
+Saanich Inlet is a saltwater fjord located off the coast of Vancouver Island. It is characterized by restricted inflow of water due to the shallow sill at the boundary with the Salish Sea, as well as the seasonal patterns of oxygen depletion, and the associated fluctuations in dissolved NO~3~^-^ and H~2~S with depth (1, 2). Nutrient input in the Saanich Inlet is largely dependent on the tidal cycles, which allow for water mixing, leading to subsequent increases in primary productivity. With limited movement of water outside the enclosed basin, organic matter generated in the euphotic zones of the inlet is quickly aerobically respired as it sinks to the bottom. This leads to the ultimate depletion of dissolved oxygen and establishment of Oxygen Minimum Zones (OMZs) prevalent in deepwater regions throughout most of the year, with the exception of late summer and fall seasons when the fjord becomes slightly oxic (3, 4). 
+
+Due to the differences in dissolved O~2~ concentrations and the high redox potential of O~2~, the fjord experiences a whole variety of microbial metabolisms from depths of 0-250 m, with populations preferentially utilizing the strongest electron acceptor readily available at any given depth (3). This phenomenon leads to a range of oxic to dysoxic to anoxic to sulfidic environments within the basin, making the Saanich Inlet a perfect model system for studies focusing on microbially-mediated biogeochemical cycles, as well as microbial ecosystems, without the need to sample from the ocean.
+
+In the age of high-throughput processing of environmental samples, it becomes necessary to classify community members based on a single common molecular marker, such as the 16S rRNA gene of bacteria and archaea. Downstream processing and analysis, however, offers a number of alternatives for reconstructing sample communities with an appropriate degree of representativeness. As such, individual sequences can be categorized into Operational Taxonomic Units (OTUs) or Amplicon Sequence Variants (ASVs), depending on the underlying principle. OTU-clustering involves grouping together of individual reads with a predetermined sequence similarity threshold – usually, around 97-99% – where a single OTU observation may be treated as a single event of species observation (5). Grouping of OTUs can also occur in two ways: in closed-referencing, reads that are sufficiently similar to a reference sequence collection are assigned to the corresponding taxon; while in de novo clustering sequence reads are grouped to a taxon based on the pairwise similarity (5, 6). ASVs, on the other hand, are produced through high-resolution identification down to a single nucleotide, allowing for discrimination between closely related organisms, as even slightly dissimilar sequences are considered to have come from different species rather than resulted from processing errors. Sequence reads are then grouped de novo, independent of an arbitrarily set threshold value (5). Previous studies indicate that both ASVs and OTUs can provide meaningful insight into microbial community composition with respect to ecological roles of individual members, although ASV-based analysis has the potential for greater identification sensitivity and, thus, effectiveness in inference of associated ecological patterns (5, 7, 8). In this project, we will continue to explore the capacity of OTUs and ASVs in environmental sampling analysis by comparing diversity and distribution of selected taxa across the oxygen gradient in the Saanich Inlet using both methods.
+
+This study will focus on diversity and distribution trends of a single family within the Gammaproteobacteria clade called Oceanospirillaceae, which comprises over a dozen genera of aquatic bacteria. Oceanospirillaceae are widely distributed in marine environments and often inhabit regions of high salinity in the water column (7, 8). Cells typically possess rod or helix-shaped morphology, and their motility is supported by polar flagella (7). Majority of genera within the family are either aerobic or microaerophilic, strictly relying on oxygen-mediated respiratory processes for metabolism (8). Oceanospirillaceae are chemooranotrophs, and some members of the family are capable of degrading complex aromatic and branched hydrocarbons, including petroleum, and utilizing them as sole carbon and energy sources. They are also not known to utilize nitrate respiration (8). 
+
+While examination of whole classes or phyla can provide robust data on abundance and diversity, we chose to narrow down the scope of our study to a single, relatively specialized family to allow for inference of ecological patterns.
+
+In this project, we aim to analyze and compare distribution and diversity patterns of Oceanospirillaceae across the oxygen gradient of Saanich Inlet water column, using both OTU and ASV-based methods. With this, we also intend to assess the effectiveness of these methods with respect to reconstructing original community from individual sequence reads by comparing the outcomes of analyses.
+
+
+### Methods
+Water was regularly collected from Saanich inlet at seven depths: 10m, 100m, 120m, 135m, 150m, 165m, and 200m. Samples were analyzed for geochemical data, including oxygen, and used to extract genomic DNA. To perform DNA extractions, biomass was collected by filtering water through a 0.22μm Sterivex filter. The 16s rRNA was then sequenced at the variable 4 through 5 region (V4-V5). To generate the data, the Illumina MiSeq platform offering 2x300 base-pair technology was used. The sequences were then processed in both mothur and QIIME2, using as many similar parameters in the processing as possible to ensure consistent analysis (9). One taxon was selected for in-depth analysis, which is the family Oceanospirillaceae. It was ensured the selected taxon was present in over three samples and contained over five OTUs.
+
+For analysis, plots were constructed and statistical methods were performed using the programming environment RStudio. The 3.4.3 version of R and the RStudio version 1.1.383 was utilized, as well as the three libraries “tidyverse”, “phyloseq”, and “magrittr”. Plots were constructed to visualize the change in diversity vs. depth, as well as oxygen concentration, changes in geochemical concentrations across depth, domain and genus abundance across depth, and changes in Oceanospirillaceae with depth and oxygen. For statistical analysis, linear models of abundance vs. depth and oxygen concentration were constructed for each OTU contained in Oceanospirillaceae. Resulting p-values were used to determine the significance of the change in abundance.
+
+### Results     
+An analysis of the sample data using both pipelines revealed nuanced changes in the microbial community as a result of variations in depth and oxygen concentration. Levels of dissolved oxygen decrease with depth, and this has an impact on species diversity. Analysis with the mothur pipeline found that the Shannon Diversity Index (SDI), which is indicative of the species diversity within the sample community, decreases with depth, as shown in Figure 1A and 1B. Analysis with mothur shows that the highest level of species diversity occurred at a depth of 100m, and the lowest level of diversity was found at 150m, with SDI values of 4.27 and 2.35, respectively. The SDI value actually increases slightly after its minimum at 150m to a value of 2.46 at 200m, though this difference is insignificant. Further, the trendline indicates a slightly higher level of species diversity at a depth of 50m than at 100m, although the high levels of uncertainty between 50m to 75m, denoted by the large grey area, render any interpolation for that depth inconclusive, as illustrated in Figure 1A. The largest changes in the SDI occurred between the depths of 100m to 150m, which corresponds to dissolved oxygen levels tapering off from 38 μM at 100m to nearly 0 μM at 150m and beyond. 
+
+Analysis with QIIME2 revealed a similar trend in the SDI, albeit with several differences. Unlike the values obtained by mothur, the SDI values given by QIIME2 decrease sequentially, from a maximum SDI of 5.04 to a minimum SDI of 2.97, as illustrated in Figure 1B.  The key difference is at depth 200m in which the lowest SDI occurs, though with mothur analysis the lowest SDI is observed at depth 165m. The change in oxygen concentrations between the depths of 100m to 150m and the corresponding change in the SDI at these depths implies that oxygen levels have an impact on the microbial community. 
+
+Across all seven depths, the bacteria domain has predominant abundance, followed by archaea, as shown in Figure 2. The mothur-processed data displayed three genera of family Oceanospirillacaea across the sampled depths: Balneatrix, Oleispira, and Pseudohongiella. As for the QIIME2 processed data, two different genera, Marinobacterium and Pseudospirillum were observed in addition to Balneatrix and Oleispira. According to Figure 4A and 4B, family Oceanospirillaceae was most abundant at a depth of 10m and least abundant at a depth of 200m. The general trend presented for Oceanospirillaceae is a gradual decline in abundance with increasing water depth. One exception is at a depth of 165m, where the abundance peaked above its neighbouring depths of 150m and 200m. With regards to the specific genus abundance, the highest was observed for Pseudohongiella, followed by Balneatrix, in the mothur processed data, as shown in Figure 3A. Conversely, in the QIIME processed data the highest genus abundance was observed for Pseudospirillum, followed by Balneatrix, as shown Figure 3B.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.width=10, fig.height=10)
+library(repr)
+library(knitr)
+library(tidyverse)
+library(cowplot)
+library(phyloseq)
+library(magrittr)
+library(dplyr)
+library(ggsn)
+library(sf)
+```
+
+```{r, include=FALSE}
+load("proj1/mothur_phyloseq.RData")
+set.seed(4832)
+m.norm.mothur = rarefy_even_depth(mothur, sample.size=100000)
+m.perc.mothur = transform_sample_counts(m.norm.mothur, function(x) 100 * x/sum(x))
+```
+```{r, include=FALSE}
+m.alpha.mothur = estimate_richness(m.norm.mothur, measures = c("Chao1", "Shannon"))
+m.meta.alpha.mothur = full_join(rownames_to_column(m.alpha.mothur), rownames_to_column(data.frame(m.perc.mothur@sam_data)), by = "rowname")
+```
+**1A.**
+```{r, eval=TRUE, echo=FALSE}
+m.meta.alpha.mothur
+```
+```{r, include=FALSE}
+load("proj1/qiime2_phyloseq.RData")
+set.seed(4832)
+m.norm.qiime = rarefy_even_depth(qiime2, sample.size=100000)
+m.perc.qiime = transform_sample_counts(m.norm.qiime, function(x) 100 * x/sum(x))
+```
+```{r, include=FALSE}
+# Calculation
+m.alpha.qiime = estimate_richness(m.norm.qiime, measures = c("Chao1", "Shannon"))
+m.meta.alpha.qiime = full_join(rownames_to_column(m.alpha.qiime), rownames_to_column(data.frame(m.perc.qiime@sam_data)), by = "rowname")
+```
+**1B.**
+```{r, eval=TRUE, echo=FALSE}
+m.meta.alpha.qiime
+```
+```{r, include=FALSE}
+plot1C = m.meta.alpha.mothur %>% 
+    arrange(Depth_m) %>%
+  
+ggplot(aes(x=Depth_m, y=Shannon)) +
+  geom_point(aes(x=Depth_m, y=Shannon)) +
+  theme_grey() +
+  geom_smooth(method='auto', aes(x=as.numeric(Depth_m), y=Shannon)) +
+  labs(y="Shannon's diversity index", x="Depth (m)")
+
+plot1D = m.meta.alpha.mothur %>% 
+    arrange(O2_uM) %>%
+  
+  ggplot(aes(x=O2_uM, y=Shannon)) +
+  geom_point(aes(x=O2_uM, y=Shannon)) +
+  theme_grey() +
+  geom_smooth(method='auto', aes(x=as.numeric(O2_uM), y=Shannon)) +
+  labs(y="Shannon's diversity index", x="Oxygen (uM)")
+
+plot1E = m.meta.alpha.qiime %>% 
+  
+ggplot(aes(x=Depth_m, y=Shannon)) +
+  geom_point(aes(x=Depth_m, y=Shannon)) +
+  theme_grey() +
+  geom_smooth(method='auto', aes(x=as.numeric(Depth_m), y=Shannon)) +
+  labs(y="Shannon's diversity index", x="Depth (m)")
+
+plot1F = m.meta.alpha.qiime %>% 
+
+  ggplot(aes(x=O2_uM, y=Shannon)) +
+  geom_point(aes(x=O2_uM, y=Shannon)) +
+  theme_grey() +
+  geom_smooth(method='auto', aes(x=as.numeric(O2_uM), y=Shannon)) +
+  labs(y="Shannon's diversity index", x="Oxygen (uM)")
+```
+```{r, eval=TRUE, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 10, fig.height = 5}
+plot_grid(plot1C, plot1D, labels=c("1C.", "1D."))
+plot_grid(plot1E, plot1F, labels=c("1E.", "1F."))
+```
+**1G.**  
+```{r, eval=TRUE, echo=FALSE, fig.width = 5, fig.height = 5}
+#metadata = data.frame(mothur@sam_data)
+m.meta.alpha.qiime %>% 
+  arrange(Depth_m) %>% 
+
+ggplot(aes(x = O2_uM, y = Depth_m)) +
+  geom_point() +
+  geom_path(aes(group = 1)) +
+  scale_y_reverse(lim=c(200,10)) +
+  theme_grey() +
+  #options(repr.plot.width=5, repr.plot.height=3) +
+  labs(y = "Depth (m)", x = "Oxygen (uM)")
+```  
+
+**Figure 1.** Chao1, Shannon Diversity Index, and five nutrient concentrations (uM) across seven depths analyzed using mothur (**A**) and QIIME2 (**B**).  Alpha diversity plots across seven depths (**C**) and oxygen concentration (**D**) using mothur. Alpha diversity plots across seven depths (**E**) and oxygen concentration (**F**) generated using QIIME2. (**G**) All measured nutrient concentrations (uM) across seven depths. 
+
+```{r, include=FALSE}
+plot2A = m.perc.mothur %>% 
+plot_bar(fill="Domain") + 
+  geom_bar(aes(fill=Domain), stat="identity") +
+  labs(fill='Domain') +
+  theme(plot.title = element_text(size=35, hjust=.5,vjust=.5,face="plain"),
+        strip.text = element_text(size=12),
+        axis.title.x = element_text(size=18),
+        axis.title.y = element_text(size=18),
+        axis.text.x = element_text(colour="grey20",size=12,angle=45,hjust=1,vjust=1),
+        axis.text.y = element_text(colour="grey20",size=12),
+        legend.text = element_text(size=12),
+        legend.box.background = element_rect(),
+        legend.box.margin = margin(6, 6, 6, 6),
+        legend.position = "right")
+
+plot2B = m.perc.qiime %>% 
+plot_bar(fill="Domain") + 
+  geom_bar(aes(fill=Domain), stat="identity") +
+  labs(fill='Domain') +
+  theme(plot.title = element_text(size=35, hjust=.5,vjust=.5,face="plain"),
+        strip.text = element_text(size=12),
+        axis.title.x = element_text(size=18),
+        axis.title.y = element_text(size=18),
+        axis.text.x = element_text(colour="grey20",size=12,angle=45,hjust=1,vjust=1),
+        axis.text.y = element_text(colour="grey20",size=12),
+        legend.text = element_text(size=12),
+        legend.box.background = element_rect(),
+        legend.box.margin = margin(6, 6, 6, 6),
+        legend.position = "right")
+```
+
+```{r, eval=TRUE, echo=FALSE, fig.width = 10, fig.height = 5}
+plot_grid(plot2A, plot2B, labels=c("2A.", "2B."), rel_widths=c(47.5/100, 52.5/100))
+```
+
+**Figure 2.** (**A**) The analysis of the abundance of domain taxa across depths using mothur (**B**)  The analysis of the abundance of domain taxa across depths using QIIME2.         
+
+```{r, include=FALSE}
+plot3A = m.perc.mothur %>% 
+  subset_taxa(Family=="Oceanospirillaceae") %>% 
+plot_bar(fill="Genus") + 
+  geom_bar(aes(fill=Genus), stat="identity") +
+  labs(fill="Genus") +
+  theme(plot.title = element_text(size=17.5, hjust=.5,vjust=.5,face="plain"),
+        axis.title.x = element_text(size=12.5),
+        axis.title.y = element_text(size=12.5),
+        axis.text.x = element_text(colour="grey20",size=7.5,angle=45,hjust=1,vjust=1),
+        axis.text.y = element_text(colour="grey20",size=7.5),
+        legend.text = element_text(size=6),
+        legend.box.background = element_rect(),
+        legend.box.margin = margin(6, 6, 6, 6),
+        legend.position = "bottom")
+
+plot3B = m.perc.qiime %>% 
+  subset_taxa(Family=="D_4__Oceanospirillaceae") %>% 
+  plot_bar(fill="Genus") + 
+  geom_bar(aes(fill=Genus), stat="identity") +
+  labs(fill="Genus") +
+  theme(plot.title = element_text(size=17.5, hjust=.5,vjust=.5,face="plain"),
+        axis.title.x = element_text(size=12.5),
+        axis.title.y = element_text(size=12.5),
+        axis.text.x = element_text(colour="grey20",size=7.5,angle=45,hjust=1,vjust=1),
+        axis.text.y = element_text(colour="grey20",size=7.5),
+        legend.text = element_text(size=6),
+        legend.box.background = element_rect(),
+        legend.box.margin = margin(6, 6, 6, 6),
+        legend.position = "bottom")
+```
+
+```{r, eval=TRUE, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 11, fig.height = 10}
+plot_grid(plot3A, plot3B, labels=c("3A.", "3B."))
+```
+
+**Figure 3.** (**A**) The analysis of the abundance genus of family Oceanospirillacaea using mothur. (**B**) The analysis of the abundance of genus of family Oceanospirillacaea using QIIME2. 
+
+
+Regardless of the clustering methods, the genus Balneatrix, which is the only genus of  Oceanospirillacaea that is not halophilic (1), tends to inhabit at lower depth. From the primary data, the student observes an increasing trend of salinity, which indicates that the environment becomes more inhospitable for Balneatrix as depth increases.
+
+
+**Table 1.** Oxygen concentration, salinity, and water density across Saanich inlet depths  
+
+**Depth**       | **OxygenSBE_V** | **Salinity_PSU** | **Density_q**
+----------------|-----------------|------------------|--------------
+Saanich, 10m    | 4.954           | 28.121           | 21.098
+Saanich, 100m   | 0.872           | 30.872           | 23.933
+Saanich, 120m   | 0.742           | 31.007           | 24.026
+Saanich, 135m   | 0.469           | 31.088           | 24.076
+Saanich, 150m   | 0.089           | 31.164           | 24.118
+Saanich, 165m   | 0.069           | 31.197           | 24.138
+Saanich, 200m   | 0.063           | 31.248           | 24.167
+
+From Figure 3A and 3B, QIIME2 analysis provided one more genus than mothur. There is no previous literature that recommends the optimal targeted variable regions of 16S rRNA in distinguishing the members of Oceanospirillacaea family, so this could be a reason that classifications based on these two methods are not consistent with one another.
+
+QIIME2 derives the biological sequences of the sample even before the introduction of amplification and sequencing errors, which allows this method to distinguish sequences that differ by as little as one nucleotide (10). QIIME2 provides higher resolution in classification of species, which may be the reason that QIIME2 was able to identify genus Marinobacterium, which mothur did not detect at all.
+
+#### **Does your taxon of interest *significantly* differ in abundance with depth and/or oxygen concentration?**
+
+In both the mothur and QIIME2 data analyses, the calculated p-values for abundance vs. depth are 0.001753 and 0.002838, respectively. As for abundance vs. oxygen concentration, the calculated p-values are 0.01401 and 0.02645, respectively. In Figure 4A and 4B, the linear models of the abundance of Oceanospirillacaea across depth display a strong negative correlation within a narrow 95% confidence interval. In Figure 5A and 5B, the linear models of the abundance of Oceanospirillacaea across oxygen concentration display a strong positive correlation within a narrow 95% confidence interval.  All of the p-values from the linear model analysis are less than 0.05, therefore Oceanospirillacaea differs significantly in abundance with depth and oxygen concentration. 
+
+```{r, include=FALSE}
+plot4A = m.perc.mothur %>% 
+  subset_taxa(Family=="Oceanospirillaceae") %>% 
+  psmelt() %>% 
+  group_by(Sample) %>% 
+  summarize(Abundance_sum=sum(Abundance), Depth_m=mean(Depth_m)) %>% 
+  
+ggplot() +
+  geom_point(aes(x=Depth_m, y=Abundance_sum)) +
+  theme_grey() +
+  labs(x = "Depth (m)", y = "Abundance (sum)") +
+  geom_smooth(method='lm', aes(x=as.numeric(Depth_m), y=Abundance_sum))
+
+plot4B = m.perc.qiime %>% 
+  subset_taxa(Family=="D_4__Oceanospirillaceae") %>% 
+  psmelt() %>% 
+  group_by(Sample) %>% 
+  summarize(Abundance_sum=sum(Abundance), Depth_m=mean(Depth_m)) %>% 
+  
+ggplot() +
+  geom_point(aes(x=Depth_m, y=Abundance_sum)) +
+  theme_grey() +
+  labs(x = "Depth (m)", y = "Abundance (sum)") +
+  geom_smooth(method='lm', aes(x=as.numeric(Depth_m), y=Abundance_sum)) 
+```
+```{r, eval=TRUE, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 10, fig.height = 5}
+plot_grid(plot4A, plot4B, labels=c("4A.", "4B."))
+```
+![](proj1/Screen Shot 2018-04-22 at 11.54.39 PM.png){width=49.7%} ![](proj1/Screen Shot 2018-04-22 at 11.54.27 PM.png){width=49.7%}
+
+```{r, include=FALSE}
+m.norm.mothur %>% 
+  subset_taxa(Family=="Oceanospirillaceae") %>% 
+  tax_glom(taxrank = 'Family') %>%
+  psmelt() %>%
+
+  lm(Abundance ~ Depth_m, .) %>% 
+  summary()
+
+m.norm.qiime %>% 
+  subset_taxa(Family=="D_4__Oceanospirillaceae") %>% 
+  tax_glom(taxrank = 'Family') %>%
+  psmelt() %>%
+
+  lm(Abundance ~ Depth_m, .) %>% 
+  summary()
+```
+
+**Figure 4.** Linear regression model of the abundance of Oceanospirillaceae across depth using mothur analysis (**A**) and QIIME2 analysis (**B**), with  correspondingstatistical analysis of the abundance of Oceanospirillaceae across depth below. 
+
+
+```{r, include=FALSE}
+plot5A = m.perc.mothur %>% 
+  subset_taxa(Family=="Oceanospirillaceae") %>% 
+  psmelt() %>% 
+  group_by(Sample) %>% 
+  summarize(Abundance_sum=sum(Abundance), O2_uM=mean(O2_uM)) %>% 
+  
+ggplot() +
+  geom_point(aes(x=O2_uM, y=Abundance_sum)) +
+  theme_grey() +
+  labs(x = "Oxygen (uM)", y = "Abundance (sum)") +
+  geom_smooth(method='lm', aes(x=as.numeric(O2_uM), y=Abundance_sum))
+
+plot5B = m.perc.qiime %>% 
+  subset_taxa(Family=="D_4__Oceanospirillaceae") %>% 
+  psmelt() %>% 
+  group_by(Sample) %>% 
+  summarize(Abundance_sum=sum(Abundance), O2_uM=mean(O2_uM)) %>% 
+  
+ggplot() +
+  geom_point(aes(x=O2_uM, y=Abundance_sum)) +
+  theme_grey() +
+  labs(x = "Oxygen (uM)", y = "Abundance (sum)") +
+  geom_smooth(method='lm', aes(x=as.numeric(O2_uM), y=Abundance_sum))
+```
+
+```{r, eval=TRUE, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 10, fig.height = 5}
+plot_grid(plot5A, plot5B, labels=c("5A.", "5B."))
+```
+
+![](proj1/Screen Shot 2018-04-23 at 12.01.18 AM.png){width=49.7%} ![](proj1/Screen Shot 2018-04-23 at 12.01.27 AM.png){width=49.7%}
+```{r, include=FALSE}
+m.norm.mothur %>% 
+  subset_taxa(Family=="Oceanospirillaceae") %>% 
+  tax_glom(taxrank = 'Family') %>%
+  psmelt() %>%
+
+  lm(Abundance ~ O2_uM, .) %>% 
+  summary()
+
+m.norm.qiime %>% 
+  subset_taxa(Family=="D_4__Oceanospirillaceae") %>% 
+  tax_glom(taxrank = 'Family') %>%
+  psmelt() %>%
+
+  lm(Abundance ~ O2_uM, .) %>% 
+  summary()
+```
+
+**Figure 5.** Linear regression model of the abundance of Oceanospirillaceae across oxygen concentration using mothur analysis (**A**) and QIIME2 analysis (**B**), with corresponding statistical analysis of the abundance of Oceanospirillaceae across oxygen concentration below. 
+
+#### **Within your taxon, what is the richness (number of OTUs/ASVs)?**
+
+Across all samples, there are 25 OTUs within family Oceanospirillaceae according to the mothur analysis as illustrated in Table 2.  For the QIIME2 analysis, there are 28 ASVs within family Oceanospirillaceae as shown in Table 2.
+
+**Table 2.** The richness of Oceanospirillaceae across depths determined using mothur and QIIME2  
+
+**Depth**       | **Number of taxa found, mothur** | **Number of taxa found, QIIME**
+----------------|----------------------------------|--------------------------------
+Saanich, 10m    | 16                               | 6
+Saanich, 100m   | 12                               | 16
+Saanich, 120m   | 7                                | 16
+Saanich, 135m   | 6                                | 10
+Saanich, 150m   | 5                                | 10
+Saanich, 165m   | 6                                | 11
+Saanich, 200m   | 9                                | 6
+Overall richness| 25                               | 28 
+
+
+#### **Do the abundances of OTUs/ASVs within your taxon of interest change *significantly* with depth and/or oxygen concentration?**
+
+Across the 25 OTUs identified within family Oceanospirillaceae using mothur, the abundance of 12 of the 25 OTUs change significantly with both depth and oxygen concentration. The significant OTUs within family Oceanospirillaceae across depth are OTU0065, OTU0327, OTU0511, OTU0675, OTU0952, OTU0979, OTU1077, OTU1349, OTU1516, OTU1685, OTU1992, and OTU3677. The general trend for the linear model of each of these OTU is a strong negative correlation that falls within a narrow 95% confidence interval as shown in Figure 6A. The p-values for each of the significant OTUs are also calculated to be less than 0.05, with all calculated p-values in Table 3. The same OTUs were significant with respect to oxygen concentration from the analysis of the p-values and the linear models in Figure 6C.
+
+**Table 3.** p-values from linear models of abundance vs. depth and oxygen using mothur-produced data
+
+**mothur OTU** | **Depth** | **Oxygen**
+---------------|-----------|-----------
+#OTU0065       | 0.01105   | 0.00003483
+#OTU0084       | 0.1132    | 0.3495
+#OTU0090       | 0.9653    | 0.5526
+#OTU0104       | 0.7401    | 0.7596
+#OTU0117       | 0.5847    | 0.954
+#OTU0327       | 0.01511   | 0.0000997
+#OTU0418       | 0.7895    | 0.7514
+#OTU0511       | 0.01018   | 0.00003922
+#OTU0675       | 0.02419   | 0.0002626
+#OTU0857       | 0.2077    | 0.5905
+#OTU0952       | 0.0164    | 0.0001264
+#OTU0979       | 0.0164    | 0.0001264
+#OTU1077       | 0.0164    | 0.0001264
+#OTU1349       | 0.0164    | 0.0001264
+#OTU1516       | 0.0164    | 0.0001264
+#OTU1678       | 0.3893    | 0.5987
+#OTU1685       | 0.0164    | 0.0001264
+#OTU1730       | 0.4401    | 0.6055
+#OTU1992       | 0.0164    | 0.0001264
+#OTU2430       | 0.6864    | 0.9432
+#OTU3469       | 0.6864    | 0.9432
+#OTU3676       | 0.2077    | 0.5905
+#OTU3677       | 0.0164    | 0.0164
+#OTU3678       | 0.6864    | 0.9432
+#OTU3783       | 0.2077    | 0.5905
+
+As for the 28 ASVs that were identified using QIIME2, the abundance of 4 of the 28 Oceanospirillaceae ASVs change significantly with both depth and oxygen concentration. The four ASVs that change significantly with depth are ASV131, ASV213, ASV810, and ASV1414. According to Figure 7A, the general trend shown by each of the four ASVs is a strong positive correlation that falls within a narrow 95% confidence interval. Their respective p-values are also calculated to be less than 0.05, with all calculated p-values in Table 4. The ASVs that change significantly with respect to oxygen concentration are ASV131, ASV213, and ASV810. General trends shown are consistent with that of mothur data analysis according to the p-values and the linear models in Figure 7C. 
+
+**Table 4.** p-values from linear models of abundance vs. depth and oxygen using QIIME-produced data
+
+**QIIME ASV** | **Depth** | **Oxygen**
+--------------|-----------|-----------
+#Asv107       | 0.5322    | 0.5905
+#Asv120       | 0.8776    | 0.5924
+#Asv131       | 0.0164    | 0.0001264
+#Asv213       | 0.01002   | 0.00003552
+#Asv243       | 0.8       | 0.6734
+#Asv417       | 0.9291    | 0.8889
+#Asv476       | 0.2077    | 0.5905
+#Asv668       | 0.2077    | 0.5905
+#Asv810       | 0.007237  | 0.0000101
+#Asv1050      | 0.9291    | 0.8889
+#Asv1152      | 0.707     | 0.8377
+#Asv1283      | 0.6896    | 0.7813
+#Asv1352      | 0.7976    | 0.6851
+#Asv1414      | 0.01526   | 0.09034
+#Asv1430      | 0.2077    | 0.5905
+#Asv1486      | 0.6641    | 0.8984
+#Asv1490      | 0.8502    | 0.799
+#Asv1570      | 0.6988    | 0.7065
+#Asv1593      | 0.9291    | 0.8889
+#Asv1797      | 0.2077    | 0.5905
+#Asv1977      | 0.2077    | 0.5905
+#Asv2036      | 0.885     | 0.7762
+#Asv2097      | 0.8012    | 0.6649
+#Asv2125      | 0.6864    | 0.9432
+#Asv2215      | 0.6864    | 0.9432
+#Asv2281      | 0.7822    | 0.3544
+#Asv2297      | 0.8776    | 0.7041
+#Asv2341      | 0.2077    | 0.5905
+
+**6A.**
+```{r, eval=TRUE, echo=FALSE}
+m.perc.mothur %>% 
+  subset_taxa(Family=="Oceanospirillaceae") %>% 
+  psmelt() %>% 
+  
+ggplot() +
+  geom_point(aes(x=Depth_m, y=Abundance)) +
+  theme_grey() +
+  labs(x = "Depth (m)") +
+  geom_smooth(method='lm', aes(x=Depth_m, y=Abundance)) +
+  facet_wrap(~OTU, scales="free_y")
+```
+**6B.**
+```{r, eval=TRUE, echo=FALSE, fig.width = 10, fig.height = 10}
+m.perc.mothur %>% 
+  subset_taxa(Family=="Oceanospirillaceae") %>%
+  psmelt() %>% 
+  
+ggplot() +
+  geom_point(aes(x=Sample, y=OTU, size=Abundance, color=O2_uM)) + 
+  scale_size_continuous(range = c(0,5)) +
+  theme_grey() +
+  theme(plot.title = element_text(size=15, hjust=.5,vjust=.5,face="plain"),
+        axis.text.x = element_text(colour="grey20",size=10,angle=45,hjust=.5,vjust=.5,face="plain"),
+        legend.box.background = element_rect(),
+        legend.box.margin = margin(6, 6, 6, 6),
+        legend.position = "right")
+```
+**6C.**
+```{r, eval=TRUE, echo=FALSE}
+m.perc.mothur %>% 
+  subset_taxa(Family=="Oceanospirillaceae") %>% 
+  psmelt() %>% 
+  
+ggplot() +
+  geom_point(aes(x=O2_uM, y=Abundance)) +
+  theme_grey() +
+  labs(x = "Oxygen (uM)") +
+  geom_smooth(method='lm', aes(x=O2_uM, y=Abundance)) +
+  facet_wrap(~OTU, scales="free_y")
+```
+```{r, eval=TRUE, echo=FALSE, fig.width = 10, fig.height = 10}
+#**6D**
+#m.perc.mothur %>% 
+#  subset_taxa(Family=="Oceanospirillaceae") %>%
+  #psmelt() %>% 
+  
+#ggplot() +
+ # geom_point(aes(x=O2_uM, y=OTU, size=Abundance, color=OTU)) + 
+  #scale_size_continuous(range = c(0,5)) +
+   # theme(plot.title = element_text(size=15, hjust=.5,vjust=.5,face="plain"),
+    #    axis.text.x = element_text(colour="grey20",size=10,angle=0,hjust=.5,vjust=.5,face="plain"),
+     #   legend.box.background = element_rect(),
+      #  legend.box.margin = margin(6, 6, 6, 6),
+       # legend.position = "right")
+```
+
+**Figure 6.** Analysis of the abundance of OTUs within family Oceanospirillaceae across depth and oxygen concentration using mothur. Linear models are represented in (**A**) and (**C**) and abundance plot is represented in (**B**). 
+
+**7A.**
+```{r, eval=TRUE, echo=FALSE}
+m.perc.qiime %>% 
+  subset_taxa(Family=="D_4__Oceanospirillaceae") %>% 
+  psmelt() %>% 
+  
+ggplot() +
+  geom_point(aes(x=Depth_m, y=Abundance)) +
+  theme_grey() +
+  labs(x = "Depth (m)") +
+  geom_smooth(method='lm', aes(x=Depth_m, y=Abundance)) +
+  facet_wrap(~OTU, scales="free_y")
+```
+**7B.**
+```{r, eval=TRUE, echo=FALSE, fig.width = 10, fig.height = 10}
+m.perc.qiime %>% 
+  subset_taxa(Family=="D_4__Oceanospirillaceae") %>%
+  psmelt() %>% 
+  
+ggplot() +
+  geom_point(aes(x=Sample, y=OTU, size=Abundance, color=O2_uM)) + 
+  scale_size_continuous(range = c(0,5)) +
+  theme_grey() +
+  theme(plot.title = element_text(size=15, hjust=.5,vjust=.5,face="plain"),
+        axis.text.x = element_text(colour="grey20",size=10,angle=45,hjust=.5,vjust=.5,face="plain"),
+        legend.box.background = element_rect(),
+        legend.box.margin = margin(6, 6, 6, 6),
+        legend.position = "right")
+```
+**7C.**
+```{r, eval=TRUE, echo=FALSE}
+m.perc.qiime %>% 
+  subset_taxa(Family=="D_4__Oceanospirillaceae") %>% 
+  psmelt() %>% 
+  
+ggplot() +
+  geom_point(aes(x=O2_uM, y=Abundance)) +
+  theme_grey() +
+  labs(x = "Oxygen (uM)") +
+  geom_smooth(method='lm', aes(x=O2_uM, y=Abundance)) +
+  facet_wrap(~OTU, scales="free_y")
+```
+
+```{r, eval=TRUE, echo=FALSE, fig.width = 10, fig.height = 10}
+#**7D**
+#m.perc.qiime %>% 
+#  subset_taxa(Family=="D_4__Oceanospirillaceae") %>%
+#  psmelt() %>% 
+  
+#ggplot() +
+ # geom_point(aes(x=O2_uM, y=OTU, size=Abundance, color=OTU)) + 
+#  scale_size_continuous(range = c(0,5)) +
+  #  theme(plot.title = element_text(size=15, hjust=.5,vjust=.5,face="plain"),
+   #     axis.text.x = element_text(colour="grey20",size=10,angle=0,hjust=.5,vjust=.5,face="plain"),
+    #    legend.box.background = element_rect(),
+     #   legend.box.margin = margin(6, 6, 6, 6),
+      #  legend.position = "right")
+```
+
+**Figure 7.** Analysis of the abundance of ASVs within family Oceanospirillaceae across depth and oxygen concentration using QIIME. Linear models are represented in (**A**) and (**C**) and abundance plot is represented in (**B**) . 
+
+#### **Are the answers to the above the same using mothur and QIIME2 processed data?**
+
+In deducing the significance of the abundance of Oceanospirillaceae across depths and oxygen concentration, both mothur and QIIME2-processed data confirmed that Oceanospirillaceae indeed differs significantly across depths and oxygen concentration. The abundance of the OTUs and ASVs of Oceanospirillaceae were also found to be significant from analysis using each respective pipeline. Although both mothur and QIIME2 provide generally same answers to the assigned questions, differences were also observed across certain analyses. For example, in Figure 1A and 1B, the Chao1 and Shannon Diversity Index values are greater in value in the QIIME2-processed data, compared to the mothur processed data. Another prominent difference lies in the number of significant OTUs and ASVs that were assigned by each pipeline. According to Table 2, QIIME2 outputted 3 more taxa asssignments to Oceanospirillaceae than mothur. Also, in Figure 3A and 3B, there is an increase in genus diversity observed by QIIME2-processed data. Interestingly, the number of significant OTUs amounted to 12 out of 25, compared to only 4 out of 28 significant ASVs.  
+
+### Discussion
+
+#### **If you found significant differences for your taxon across depth/oxygen, why might these be occurring (*hint* think about the accompanying geochemical data we have)?**
+
+Using both the mothur and QIIME2 pipelines, we observed an large decrease in the abundance of Oceanospirillaceae genera in relation to depth (Fig 3A, 3B). As the oxygen concentration versus depth graph in Fig 1G indicates, oxygen concentrations decrease linearly with increasing depth to 0μM at 150m, where it remains at 0μM for further depths. This does not reflect the exponential decrease in abundance observed in Fig 3A, 3B, suggesting that Oceanospirillaceae, being obligate aerobes, may be highly sensitive to even minute changes in oxygen concentration. We identified 4 ASVs with QIIME2 that were significantly negatively correlated with depth, Asv213,  Asv131, ASV1414 and Asv810 (Fig 7A). Also, approximately half of the OTUs analyzed were found to be significantly negatively correlated with depth (Fig 6A). Importantly, Oceanospirillaceae are known to be limited in their use of available terminal electron acceptors, being able to use only oxygen [6]. Oceanospirillaceae are also not able to fix nitrogen. Therefore, it is unlikely that the observed decrease in abundance is influenced by the increasing/decreasing concentrations of molecules such as NO~2~^-^, NO~3~^-^, NH~4~^+^, H~2~S, PO~4~^3-^ and others. 
+
+There is an obvious limitation with the data in that sample information is missing from depths in between 10m and 100m. This leaves a wide margin of statistical uncertainty when attempting to determine the alpha diversity of Oceanospirillaceae against oxygen concentration or depth, which explains the large grey areas in Fig 1C-1E. Nevertheless, we observed little abundance disparity between the readings at depth 10m and 100m, so we hypothesize that Oceanospirillaceae abundance is fairly consistent within that range, with OTUs and ASVs. Contradictory to this, however, Figure 1G shows a clear drop in oxygen concentration by more than 60% at the 50m mark. Although this decrease in oxygen concentration may not have an effect on overall abundance, there is a distinct shift in genera-specific abundance. At 10m, Pseudospirillum constitute over 90% of the population, while at depths of 100m, 120m and 135m, the abundance is divided equally between Pseudospirillum and Balneatrix. It is likely that the Balneatrix genus is less sensitive to drastic changes in oxygen concentration, although without functional analysis of sequence data, this remains unknown.
+
+Interestingly, despite Oceanospirillaceae being strictly aerobic, both mothur and QIIME2 detected low levels of abundance at anoxic depths: 150m, 165m and 200m. Given that Saanich Inlet is a seasonally anoxic fjord, there are seasonal fluctuations in oxygen levels across all depths, where even at 200m, oxygen concentrations can range from 15μM to less than 3μM [1]. It is possible that although Figure 1G shows negligible oxygen concentrations at depths below 150m, small periodic fluxes of dissolved oxygen allow for the survival of small Oceanospirillaceae populations, although this is unlikely given the time of year. Further, since 16S rRNA-based analyses do not discriminate between the living and the dead organisms in the environmental sample, some of the abundances at greater depths could be attributed to metabolically inactive cells and dead organic matter that sank down from the near-surface waters.
+
+#### **What are the implications of potential differences in pipelines for microbial ecology research and discovery?**
+
+With respect to the comparison between mothur and QIIME2 abundance detection, our data reflects findings in previous literature. QIIME2, with its use of a de-noising algorithm prior to sequence clustering and resulting higher sensitivity to single nucleotide differences produced 4 distinct genera: Balneatrix, Oleispira, Pseudospirillum and Marinobacterium, while Mothur only detected 3 genera: Balneatrix, Oleispira and Pseudohongiella (Fig 3A, 3B). Given the different methods in which each pipeline clusters sequence data, this variation is expected. We also observed greater diversity at the genus level with QIIME2 than with mothur. The greater resolution at this taxonomic level provided by QIIME2 highlights its potential to be used to distinguish between genetically similar bacteria. For this reason, QIIME2 could be used, with a higher degree of sensitivity, to categorize, sort and process information from large data sets, such as primary sequence data from newly sampled environments. The weakness of both pipelines, however, is that the fixed definition of bacterial “species” is largely undefined and highly subjective. This, combined with the exceedingly high degree of 16S RNA similarity at the genus level between bacteria, makes it difficult to make taxonomic conclusions from the data. Notably, both pipelines showed similar levels of abundance, indicating that either pipeline can be used to reliably determine bacterial abundance in environmental samples.
+
+In discussing the differences between statistically significant OTUs or ASVs versus depth, we acknowledge that unless accurate functional information is obtained from the sequence data, the genus classification of Oceanospirillaceae remains uncertain. In addition to this, little is known about the proteomics of Oceanospirillaceae and their species genotypes have been largely unexplored, making it more difficult to make conclusions based on diversity and richness. However, our results indicate that QIIME2 might be more effective at determining richness, given that the Chao1 richness estimation from QIIME2 reflect the shift in genus abundance at each depth, indicating an increase in ASV richness with the increased abundance of Balneatrix at lower depths (Table 2). Although mothur detects the shift in genera abundance, it fails to detect the likely change in richness as seen in Table 2. We predict that this increase in ASVs at depths between 100m and 165m may be due to subtle nucleotide changes that correspond to homologs of metabolic genes in Balneatrix that enable them to inhabit these slightly less oxygenated depths and to influence enzyme adaptability in different environmental conditions.
+
+It is crucial to note that the data used is severely limited and in need of sampling from depths between 10m and 100m. With a greater amount of varied sampling data, there may be greater confidence in using mothur for detailed characterization of samples at the genus level. Overall, although the analyses from both pipelines was effective, we believe that it is not fully representative of the actual environment and further tests are needed to more accurately characterize Oceanospirillaceae in Saanich Inlet. We conclude that QIIME2, with its greater sensitivity and ability to detect minute differences in specific metabolic genes of interest, makes it an effective tool in predicting abundance, diversity and richness in biogeochemically fluctuating environments, particularly when working with limited sequence data. Mothur, with its flexibility and precision, due to its use of reference sequences during alignment and cleaning would allow for more robust sample characterization, although with less coverage. Despite the variation between the pipelines in terms of diversity, genus abundance and richness, analysis of Saanich Inlet sample data using both mothur and QIIME2 lead us to conclude that there is an inverse relationship between overall abundance of Oceanospirillaceae and dissolved oxygen concentration. 
+
+### References
+1. Torres-Beltrán M, Hawley A, Capelle D, Zaikova E, Walsh D, Mueller A, Scofield M, Payne C, Pakhomova L, Kheirandish S, Finke J, Bhatia M, Shevchuk O, Gies E, Fairley D, Michiels C, Suttle C, Whitney F, Crowe S, Tortell P, Hallam S. 2017. A compendium of geochemical information from the Saanich Inlet water column. Sci Data **4**:170159.
+
+2. Belley R, Snelgrove P, Archambault P, Juniper S. 2016. Environmental Drivers of Benthic Flux Variation and Ecosystem Functioning in Salish Sea and Northeast Pacific Sediments. PLoS One **11**(3):e0151110.
+
+3. Grundle DS. 2007. MSc thesis. University of Victoria, Victoria, BC. 
+
+4. Manning C, Hamme R, Bourbonnais A. 2010. Impact of deep-water renewal events on fixed nitrogen loss from seasonally-anoxic Saanich Inlet. Mar Chem **122**(1-4):1-10.
+
+5. Callahal BJ, McMurdie PJ, Holmes SP. 2017. Exact sequence variants should replace operational taxonomic units in marker-gene data analysis. ISME J **11**:2639–2643.
+
+6. He Y, Caporaso J, Jiang X, Sheng H, Huse S, Rideout J, Edgar R, Kopylova E, Walters W, Knight R, Zhou H. 2015. Stability of operational taxonomic units: an important but neglected property for analyzing microbial diversity. Microbiome **3**(1):20.
+
+7. Garrity G, Bell J, Lilburn T. 2007. FAMILY I. OCEANOSPIRILLACEAE. In Brenner, D, Krieg, N, Stanley, J (ed.), Bergey's Manual® of Systematic Bacteriology: Volume 2: The Proteobacteria, Part B: The Gammaproteobacteria. Springer Science & Business Media, New York.
+
+8. Satomi M, Fujii T. 2014. The Family Oceanospirillaceae. In Rosenberg, E, DeLong, E, Lory, S, Stackebrandt, E, Thompson, F (ed.), The Prokaryotes, 4th ed. Springer, Berlin.
+
+9. Dill-MacFarland K. 2018. MICB425 Project 1: *mothur vs. QIIME2 Microbiome Data Analysis*. Project 1 instructions for course MICB425. University of British Columbia, Vancouver, BC.
+
+10. Callahan, B, McMurdie, P, Holmes, S P. 2017. Exact sequence variants should replace operational taxonomic units in marker-gene data analysis. ISME J **11**:2639-2643.
+
+# Module 4: "Depth and nitrous oxide-dependent distribution of the denitrification gene nosZ throughout the Saanich Inlet"
+ 
+author: "by Paulina Beskrovnaya (38929148), Zack Dang (22481148), Jenny He (25889149), Julia Pierce (24366429), Nai Hsuan Shao (35980135), CK Wong"
+
+### Abstract
+The saltwater fjord Saanich Inlet has a pronounced redox gradient resulting from the restricted water flow and influx of nutrients, offering a unique opportunity to study changes in microbial communities throughout the water column. Sampling at multiple depths throughout the inlet, biomass is collected and final genomes constructed using Illumina and MetaPathways. Focusing on the denitrification pathway and the gene nosZ, community structure was then studied with changing depth and nitrous oxide (N~2~O) concentration. The abundance of nosZ is found below 100m, abundance increasing with depth and decreasing N~2~O concentration. The overall pattern of nosZ expression illustrated the need for distributed metabolic pathways, particularly in variable environments like the annually oxic/anoxic Saanich Inlet.
+
+### Introduction 
+Saanich Inlet is a seasonally anoxic saltwater fjord located between the Malahat highlands and the Saanich peninsula on Vancouver Island, British Columbia. For most of the year, the fjord remains anoxic below 150m (1). However, during the late summer and early fall months, oxygenated water from the Haro Strait and Satellite Channel spill over into the deep water of Saanich Inlet, resulting in a temporary rise in dissolved oxygen concentration. With oxygen concentration being a defining factor in the microbial metabolic diversity, a wide range of diverse and niche metabolic systems have evolved within the fjord. Along with oxygen, many essential nutrient species concentrations also vary significantly with depth. These molecules include N~2~O, NO~3~^-^, SiO~2~, H~2~S, NH~4~^+^, CH~4~ and PO~4~^3-^. Spatial and temporal variation in metabolic enzymes occur as a result of microbes adapt to use the strongest available electron acceptor at each depth. Saanich Inlet has, thus, become an important environment to study microbial metabolism in oxygen minimum zones (OMZ) and biogeochemical cycling in aquatic habitats.
+
+One of the most influential components of microbial biogeochemical engine is the nitrogen cycle. Many intermediates of the nitrogen are substrates used in microbial respiration, mostly as terminal electron acceptors. Atmospheric nitrogen gas is first oxidized into nitrate (NO~3~^-^) by nitrogen fixing organisms, converting it into organic nitrogen, which is then used and stored in organismal reservoirs in molecules such as amino acids and nitrogenous bases. Eventually, this organic nitrogen must be returned to the atmosphere as gaseous N~2~. This is achieved by the denitrification process, in which nitrate and/or nitrite are sequentially reduced by a series of nitrate reductases to form N~2~ (2). Nitrate is first reduced into nitrite (NO~2~^-^) by the enzymes NarG and NapA. Nitrite is then reduced into nitric oxide (NO) by NirK and NirS, which is subsequently reduced into nitrous oxide (N~2~O) by the NorB and NorC proteins. Finally, the nitrate reductase NosZ reduces nitrous oxide into gaseous N~2~, releasing it into the atmosphere and completing the nitrogen cycle. Notably, this process rarely occurs within a single species, but rather by different groups of organisms that catalyze specific reactions within the denitrification process. Each step in the denitrification process represents a group of microbes utilizing the appropriate nitrogen species as part of their metabolism, as these nitrogen-containing molecules are sequentially reduced. As such, denitrification genes are used as molecular markers to study non-culturable organisms in both soil and marine environmental samples (3). This project will focus on the final step of the process, the conversion of nitrous oxide to N~2~ by NosZ.
+
+NosZ, a nitrous oxide reductase, is a modular homodimeric multicopper enzyme, first purified from gram-negative denitrifiers (4). A study by Scala & Kerkhof (1999) (5) compared 49 nosZ genes collected from Pacific and Atlantic continental shelf sediments and concluded that all 49 variants contained a highly conserved copper-binding catalytic domain. In soil, the enzyme can be found in several genera including Bradyrhizobium, Brucella, Dechloromonas, Flavobacterium, Pseudomonas, Ralstonia, and Sinorhizobium (6). However, it was found that within many of these soil genera, the bacteria possessed denitrification gene clusters but lacked nosZ (4). These bacteria thus emit nitrous oxide in denitrifying conditions. This suggests that the organisms that express nosZ are a niche group that are solely responsible for the final denitrification step. Nitrous oxide is a potent greenhouse gas that is ~300% more potent than CO~2~ in terms of global warming potential (4). Therefore, with such a specific group of organisms being responsible for the catalysis of nitrous oxide reduction into N~2~, it is essential to develop our understanding of the nosZ gene and its distribution within the anoxic environmental metagenome.
+
+The aim of this study is to identify the distribution of nosZ across different depths and between which microbial taxa. A prior study indicates that nosZ is fairly prominent in soil samples below 18.3m, with an abundance of 5-17% relative to total 16S gene copy numbers below this depth (7). We will use metagenomic and metatranscriptomic data to assess the abundance of nosZ expression in both DNA and RNA. With this information, we hope to compare expression patterns between different taxonomic groups and describe the roles of these organisms in the nitrogen cycle. We also seek to establish any correlations between N2O concentration across depth and nosZ expression. 
+
+### Methods
+Water was regularly collected from Saanich inlet at seven depths: 10m, 100m, 120m, 135m, 150m, 165m, and 200m. Samples were used to extract genomic DNA and RNA by collecting biomass by filtering water through a 0.22μm Sterivex filter. To construct shotgun Illumina libraries, genomic DNA and cDNA, generated from the reverse transcription of RNA, were used. The Illumina HiSeq platform was then used to produce sequencing data, which were then quality controlled by the Joint Genome Institute. To construct and process final metagenomes, MetaPathways version 2.5 at UBC was used (8).
+
+The final data were used to reconstruct the nitrogen cycle across the redox gradients in Saanich Inlet. To focus the analysis, one gene associated with denitrification, nosZ, was selected as the functional gene of interest. The analysis was done with Tree-based Sensitive and Accurate Protein Profiler (TreeSAPP), **version (X)**, using the following commands:
+
+ - time treesapp.py -T 8 --verbose --delete \ -t D0601 -i   
+ - bucket/MetaG_assemblies/SI072_LV_10m_DNA.scaffolds.fasta --rpkm -r  
+ - bucket/MetaG_reads/SI072_LV_10m.anqdp.fastq -o treesapp_out_dir_10m
+ - rm treesapp_out_dir_10m/RPKM_output/*.sam
+ 
+These commands were used to run TreeSAPP on a server provided by Google Cloud, to provide commentary during runtime, to delete intermediary files, and to save files of interest in a separate location. Final phylogenetic trees were constructed using the data produced by TreeSAPP via Interactive Tree of Life (iTOL) version 4 (9). The final report and additional analyses were carried out using the programming environment RStudio, version 3.4.3 and the three libraries “tidyverse”, “phyloseq”, and “magrittr”. Linear models were constructed using abundance vs. depth and abundance vs. N~2~O concentration.
+
+### Results 
+  
+**100m**  
+![](proj2/DNA_100m_red.png)    
+**120m**  
+![](proj2/DNA_120m_red.png)   
+**135m**  
+![](proj2/DNA_135m_red.png)   
+**150m**  
+![](proj2/DNA_150m_red.png) 
+
+**165m**  
+![](proj2/DNA_165m_red.png)  
+**200m**  
+![](proj2/DNA_200m_red.png)   
+
+**Figure 1.** Phylogenetic trees showing DNA expression of nosZ; red bars represent FPKM, and pink dots represnt phylogenetic placements
+
+### **How does the DNA abundance of your gene of interest differ with depth?**
+
+At a depth of 10m, the gene of interest, nosZ, is not observed. At 100m, the DNA abundance of nosZ predominates the class Flavobacteriia, specifically with species Maribacter_sp._HTCC2170 being responsible for the overall highest DNA abundance at this depth. Unclassified group SAR324, contains the second most abundant nosZ DNA, followed by group SUP05 of class Gammaproteobacteria at 100m. Interestingly, at 120m the relative DNA abundance of nosZ is found to be identical to the abundance observed at 100m. At depths 135m and 150m, unclassified group SHBH1141 has an average seven-fold increase in nosZ, while unclassified group GAMMA also has a 5-fold increase at 135m, and a 12-fold increase at 150m. On the other hand, unclassified group SAR324 has a much lower DNA abundance at 135 and 150m compared to surface depths, and unclassified group EPSILON also displays a gradual decrease in nosZ DNA abundance with an increase in depth. Another interesting observation is at 150m, where nosZ DNA is present in equally low quantities across all of the clades under the class Betaproteobaceria, Gammaproteobacteria, and Alphaproteobacteria. The highest nosZ DNA across all depths belongs to the unclassified group SHBH1141 at 200m.
+
+According to Table 1, which illustrates all of the p-values for the different genus across depth, the only genus of significance is the unclassified genus with a p-value of 0.0002365. Also, the overall statistical analysis of the different genus across depth has a significant p-value of 0.0005024. The general trend for the DNA abundance of nosZ at the different depths is that it remains constant from 100m to 200m, gradually peaks at 150m,  drops by nearly half at 165m, and then increases to a maximum again at 200m. 
+gradually peaks at 150m,  drops by nearly half at 165m, and then increases to a maximum again at 200m. 
+
+```{r, include=FALSE}
+#load("~/Documents/MICB425_portfolio/mothur_phyloseq.RData")
+load("proj2/mothur_phyloseq.RData")
+metadata = data.frame(mothur@sam_data)
+
+nosZ.RNA.10m = read_tsv("Module_04/treesapp_out_dir_10m_MetaT/final_outputs/marker_contig_map.tsv") %>% 
+  select(Tax.RNA.10 = Confident_Taxonomy, Abund.RNA.10 = Abundance, Query)
+
+nosZ.RNA.100m = read_tsv("Module_04/treesapp_out_dir_100m_MetaT/final_outputs/marker_contig_map.tsv") %>% 
+  select(Tax.RNA.100 = Confident_Taxonomy, Abund.RNA.100 = Abundance, Query)
+
+nosZ.RNA.120m = read_tsv("Module_04/treesapp_out_dir_120m_MetaT/final_outputs/marker_contig_map.tsv") %>% 
+    select(Tax.RNA.120 = Confident_Taxonomy, Abund.RNA.120 = Abundance, Query)
+
+nosZ.RNA.135m = read_tsv("Module_04/treesapp_out_dir_135m_MetaT/final_outputs/marker_contig_map.tsv") %>% 
+    select(Tax.RNA.135 = Confident_Taxonomy, Abund.RNA.135 = Abundance, Query)
+    
+nosZ.RNA.150m = read_tsv("Module_04/treesapp_out_dir_150m_MetaT/final_outputs/marker_contig_map.tsv") %>% 
+    select(Tax.RNA.150 = Confident_Taxonomy, Abund.RNA.150 = Abundance, Query)
+
+nosZ.RNA.165m = read_tsv("Module_04/treesapp_out_dir_165m_MetaT/final_outputs/marker_contig_map.tsv") %>% 
+    select(Tax.RNA.165 = Confident_Taxonomy, Abund.RNA.165 = Abundance, Query)
+
+nosZ.RNA.200m = read_tsv("Module_04/treesapp_out_dir_200m_MetaT/final_outputs/marker_contig_map.tsv") %>% 
+    select(Tax.RNA.200 = Confident_Taxonomy, Abund.RNA.200 = Abundance, Query)
+  
+  
+    
+nosZ.DNA.10m = read_tsv("Module_04/treesapp_out_dir_10m/final_outputs/marker_contig_map.tsv") %>% 
+  select(Tax.DNA.10 = Confident_Taxonomy, Abund.DNA.10 = Abundance, Query)
+
+nosZ.DNA.100m = read_tsv("Module_04/treesapp_out_dir_100m/final_outputs/marker_contig_map.tsv") %>% 
+  select(Tax.DNA.100 = Confident_Taxonomy, Abund.DNA.100 = Abundance, Query)
+
+nosZ.DNA.120m = read_tsv("Module_04/treesapp_out_dir_120m/final_outputs/marker_contig_map.tsv") %>% 
+    select(Tax.DNA.120 = Confident_Taxonomy, Abund.DNA.120 = Abundance, Query)
+
+nosZ.DNA.135m = read_tsv("Module_04/treesapp_out_dir_135m/final_outputs/marker_contig_map.tsv") %>% 
+    select(Tax.DNA.135 = Confident_Taxonomy, Abund.DNA.135 = Abundance, Query)
+    
+nosZ.DNA.150m = read_tsv("Module_04/treesapp_out_dir_150m/final_outputs/marker_contig_map.tsv") %>% 
+    select(Tax.DNA.150 = Confident_Taxonomy, Abund.DNA.150 = Abundance, Query)
+
+nosZ.DNA.165m = read_tsv("Module_04/treesapp_out_dir_165m/final_outputs/marker_contig_map.tsv") %>% 
+    select(Tax.DNA.165 = Confident_Taxonomy, Abund.DNA.165 = Abundance, Query)
+
+nosZ.DNA.200m = read_tsv("Module_04/treesapp_out_dir_200m/final_outputs/marker_contig_map.tsv") %>% 
+    select(Tax.DNA.200 = Confident_Taxonomy, Abund.DNA.200 = Abundance, Query)
+
+
+nosZ.all = nosZ.RNA.10m %>% 
+  full_join(nosZ.RNA.100m, by = "Query") %>%
+  full_join(nosZ.RNA.120m, by = "Query") %>%
+  full_join(nosZ.RNA.135m, by = "Query") %>%
+  full_join(nosZ.RNA.150m, by = "Query") %>%
+  full_join(nosZ.RNA.165m, by = "Query") %>%
+  full_join(nosZ.RNA.200m, by = "Query") %>%
+  full_join(nosZ.DNA.10m, by = "Query") %>%
+  full_join(nosZ.DNA.100m, by = "Query") %>%
+  full_join(nosZ.DNA.120m, by = "Query") %>%
+  full_join(nosZ.DNA.135m, by = "Query") %>%
+  full_join(nosZ.DNA.150m, by = "Query") %>%
+  full_join(nosZ.DNA.165m, by = "Query") %>%
+  full_join(nosZ.DNA.200m, by = "Query") %>%
+
+  mutate(Taxonomy = ifelse(!is.na(Tax.RNA.10), Tax.RNA.10,
+                    ifelse(!is.na(Tax.RNA.100), Tax.RNA.100,
+                    ifelse(!is.na(Tax.RNA.120), Tax.RNA.120,
+                    ifelse(!is.na(Tax.RNA.135), Tax.RNA.135,
+                    ifelse(!is.na(Tax.RNA.150), Tax.RNA.150,
+                    ifelse(!is.na(Tax.RNA.165), Tax.RNA.165,
+                    ifelse(!is.na(Tax.RNA.200), Tax.RNA.200,
+                    ifelse(!is.na(Tax.DNA.10), Tax.DNA.10,
+                    ifelse(!is.na(Tax.DNA.100), Tax.DNA.100,
+                    ifelse(!is.na(Tax.DNA.120), Tax.DNA.120,
+                    ifelse(!is.na(Tax.DNA.135), Tax.DNA.135,
+                    ifelse(!is.na(Tax.DNA.150), Tax.DNA.150,
+                    ifelse(!is.na(Tax.DNA.165), Tax.DNA.165,
+                    ifelse(!is.na(Tax.DNA.200), Tax.DNA.200,
+                           "unclassified"))))))))))))))) %>% 
+
+  select(-starts_with("Tax.")) %>% 
+  gather("Key", "Abundance", starts_with("Abund")) %>% 
+  separate(Key, c("Key","Type","Depth_m"), by = ".") %>% 
+  select(Depth_m, Type, Abundance, Taxonomy, Query) %>% 
+  mutate(Depth_m = as.numeric(Depth_m)) %>%
+  mutate(Abundance = as.numeric(Abundance)) %>%
+  separate(Taxonomy, into = c("Domain", "Phylum", "Class", "Order", "Family", "Genus", "Species"), sep="; ")
+  
+  nosZ.all["N2O_nM"] = nosZ.all["Depth_m"]
+
+number_rows = nrow(nosZ.all)
+ i = 1
+ 
+ for(i in 1:number_rows){
+  if (nosZ.all[i,"N2O_nM"] == 10){
+    nosZ.all[i,"N2O_nM"] = 0.849
+  }
+ }
+ 
+ i = 1
+ 
+ for(i in 1:number_rows){
+  if (nosZ.all[i,"N2O_nM"] == 100){
+    nosZ.all[i,"N2O_nM"] = 18.087
+  }
+ }
+ 
+i = 1
+ 
+ for(i in 1:number_rows){
+  if (nosZ.all[i,"N2O_nM"] == 120){
+    nosZ.all[i,"N2O_nM"] = 16.304
+  }
+ } 
+ 
+i = 1
+ 
+ for(i in 1:number_rows){
+  if (nosZ.all[i,"N2O_nM"] == 135){
+    nosZ.all[i,"N2O_nM"] = 12.909
+  }
+ }
+ 
+ i = 1
+ 
+ for(i in 1:number_rows){
+  if (nosZ.all[i,"N2O_nM"] == 150){
+    nosZ.all[i,"N2O_nM"] = 11.815
+  }
+ }
+ 
+ i = 1
+ 
+ for(i in 1:number_rows){
+  if (nosZ.all[i,"N2O_nM"] == 165){
+    nosZ.all[i,"N2O_nM"] = 6.310
+  }
+ }
+ 
+ i = 1
+ 
+ for(i in 1:number_rows){
+  if (nosZ.all[i,"N2O_nM"] == 200){
+    nosZ.all[i,"N2O_nM"] = 0.000
+  }
+ }
+
+nosZ.all
+```
+
+```{r plot02, eval=TRUE, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=4}
+nosZ.all %>% 
+  mutate(Genus = ifelse(is.na(Genus), "unclassified", Genus)) %>% 
+
+ggplot(aes(x = Type, y = Depth_m)) +
+  geom_point(aes(size = Abundance)) +
+  scale_y_reverse(lim=c(200,10)) +
+  theme_classic()
+```
+
+**Figure 2.** Abundance of the nosZ gene (DNA vs. RNA) at different depths
+       
+### **How does the RNA abundance of your gene of interest differ with depth? Is this similar to the DNA levels?**
+Similar to the DNA abundance of nosZ at 10m, there is also no nosZ RNA observed at 10m. At depths of 100m and 200m, the RNA abundance of nosZ is relatively low. Moving towards depths greater than 120m, there is a high RNA abundance of nosZ. At 100m, SUP05 of Gammaproteobacteria is responsible for the highest RNA abundance of nosZ, which differs from Maribacter_sp._HTCC2170 of Flavobacteriia being responsible for the highest DNA abundance. Also, there is also an observed difference in the RNA abundance of nosZ at 100m and 120m, with 120m being higher [Attach tree]. The individual clade of class Betaproteobacteria, Gammaproteobacteria, and Alphaproteobacteria possessed nosZ at 150m only, albeit at very low quantities as well. The abundance plot for DNA and RNA across depths reveals that there is a higher RNA abundance of nosZ than DNA at all depths greater than 120m [Figure _]. Implications for this is that the nosZ gene is expressed very frequently at deeper depths, especially with it being the last step of the nitrogen cycle and enzymes in the previous steps of the pathway may be depleted of substrates at the depths that nosZ functions at. 
+
+**100m**  
+![](proj2/rNA_100m_red.png)    
+**120m**  
+![](proj2/rNA_120m_red.png)   
+**135m**  
+![](proj2/rNA_135m_red.png)   
+**150m**  
+![](proj2/rNA_150m_red.png) 
+**165m**  
+![](proj2/rNA_165m_red.png)  
+**200m**  
+![](proj2/rNA_200m_red.png) 
+
+**Figure 3.** Phylogenetic trees showing RNA expression of nosZ; red bars represent FPKM, and pink dots represnt phylogenetic placements
+
+### **What taxa are responsible for your gene of interest? Are they the same with depth? With DNA versus RNA?**
+
+According to the TreeSAP DNA analysis, the taxa found to be responsible for nosZ across depths 100m to 200m are unclassified SHBH1141, ZA3312c, Bac22, Rhodothermus_marinus_DSM_4252, GAMMA, class Flavobacteriia (Maribacter_sp._HTCC2170), and class Gammaproteobacteria ( SUP05). Other taxa responsible for nosZ DNA at some depths only include class Ignavibacteria, Gemmatimonadetes, Aquaficae, Archaeglobi, Thermoprotei, Epsilonproteobacteria, Deltaproteobacteria, Betaproteobacteria, Alphaproteobacteria, Cytophagia, Baceroidia, Saprospiria, Sphingobacteriia, and unclassified Ferroglobus_pacidus_DSM10642 and SAR324. With respect to the TreeSAP RNA analysis, the same taxas responsible for DNA were observed to be responsible for nosZ RNA across depths of 100m to 200m. One minor exception is that the uncultured strain Bac22, which contained nosZ DNA across all analyzed depths, lacked nosZ RNA at depths 100m and 200m.
+
+
+```{r, eval=TRUE, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=6}
+nosZ.all %>% 
+  mutate(Genus = ifelse(is.na(Genus), "unclassified", Genus)) %>%
+  #filter(Type=="RNA") %>%
+
+ggplot() +
+  geom_point(aes(x=Depth_m, y=Abundance)) +
+  geom_smooth(method='lm', aes(x=Depth_m, y=Abundance)) +
+  theme_grey() +
+  labs(x = "Depth (m)") +
+  facet_wrap(~Genus, scales="free_y")
+
+#nosZ.all %>% 
+ # mutate(Genus = ifelse(is.na(Genus), "unclassified", Genus)) %>%
+  #filter(Type=="DNA") %>%
+
+#ggplot() +
+ # geom_point(aes(x=Depth_m, y=Abundance)) +
+  #geom_smooth(method='lm', aes(x=Depth_m, y=Abundance)) +
+  #theme_grey() +
+  #labs(x = "Depth (m)") +
+  #facet_wrap(~Genus, scales="free_y")
+```
+  **Figure 4.** Abundance of Genera expressing nosZ (RNA and DNA) across depth
+  
+**Table 1.** p-values from linear models of abundance vs. depth
+
+Genus |	p-value (depth) 
+------|-----------------
+Cellulophaga |	0.9862 
+DSM |	0.4262 
+Geobacillus |	- 
+Ignavibacterium |	- 
+Leptospira |	- 
+Maribacter |	0.6306 
+Pseudovibrio |	0.6306 
+Pryobaculum |	0.6306 
+Rhodanobacter |	0.6306 
+Robiginitalea |	0.3823
+unclassified |	0.0002365
+*Overall* |	*0.0005024* 
+
+
+### **How does the abundance of your gene of interest relate to nitrogen species in Saanich?**
+
+Due to the lack of DNA and RNA data between the range of 0-100m, we cannot come to any conclusions about the relationship between expression of nosZ and N2O concentration within this range. At depths below 100m, N2O concentration is weakly negatively correlated with nosZ expression in terms of RNA. The overall increase in RNA expression of nosZ, as seen in Figure X, is only evident amongst unclassified prokaryotic genera. There appears to be no correlation between nosZ DNA abundance and N2O concentration at depths below 100m. Overall DNA abundance of nosZ is relatively constant between the depths of 100-200m despite decreasing N2O concentrations. As seen in Figure X, there is no discernable pattern in nosZ DNA abundance with increasing depth. However, nosZ DNA abundance is negatively correlated with N2O concentration in certain groups such as in SAR324 and EPSILON and Maribacter, while in other groups such as GAMMA and Bac22 there is a weak positive correlation. Between the various genera possessing nosZ, there appears to be an overall balancing effect on total DNA abundance from 100-200m. 
+
+```{r, eval=TRUE, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=6}
+nosZ.all %>% 
+  
+ggplot() +
+  geom_point(aes(x=N2O_nM, y=Abundance)) +
+  geom_smooth(method='lm', aes(x=N2O_nM, y=Abundance)) +
+  theme_grey() +
+  labs(x = "N2O (nM)") +
+  facet_wrap(~Genus, scales="free_y")
+```
+**Figure 5.** Abundance of Genera expressing nosZ (RNA and DNA) across N~2~O concentration
+
+**Table 2.** p-values from linear models of abundance vs.  nitrous oxide concentration
+
+Genus |	p-value (N~2~O)
+------|----------------
+Cellulophaga |	0.9122
+DSM |	0.4262 
+Geobacillus |	-
+Ignavibacterium |	- 
+Leptospira |	- 
+Maribacter |	0.6724
+Pseudovibrio |	0.6724
+Pryobaculum |	0.6724
+Rhodanobacter |	0.6724
+Robiginitalea |	0.3823
+unclassified |	0.0002699
+*Overall* |	*0.0006377*
+
+![](proj2/Rplot5_final.png){width=80%}
+**Figure 6.** Nitrous oxide (N~2~O) vs depth and abundance of DNA and RNA expressing nosZ for each Genus vs depth
+
+### Discussion
+
+#### **Frame your gene of interest’s results within a broader discussion of denitrification and propose evolutionary, environmental, etc. reasoning for distributed metabolism as seen in the nitrogen cycle**
+
+As observed in our results, the abundance of nosZ is spread across depths below 100m, with a relatively constant overall DNA abundance and increasing RNA abundance. The increased expression reflects the importance of nosZ at the final conversion step in denitrification whereby N~2~O is reduced to N~2~. Overall, RNA abundance is generally higher than DNA abundance, indicating an active expression of nosZ particularly in deeper regions of the water column. This increased expression at lower depths also corresponds to the decreasing concentration of N~2~O below 100m. This makes logical sense, as with more nitrous oxide reductase expression, more N~2~O would be consumed and reduced to N~2~, resulting in lower N~2~O concentrations.
+ 
+Interestingly, there are opposing trends in DNA abundance between some Genera. Some genera become more abundant with depth, while others decrease with depth. This results in the overall balancing of DNA abundance across all depths showing nosZ expression. These opposing trends could suggest a shift in the nitrous oxide reduction function between the different organisms. With increasing depth, the concentration of many molecules and enzymatic substrates changes, leading to a different geochemical makeup. Some taxa are adapted to specific depths and the corresponding concentration of available compounds, and are thus more suited to perform nitrous oxide reduction at these specific depths, outcompeting those taxa that are not as well adapted. For example, the classes Betaproteobacteria, Gammaproteobacteria, and Alphaproteobacteria are only observed to have the nosZ gene at 150m, albeit at very low quantities (Figure 1 and 3, 150m Tree). The widespread distribution of metabolic enzymes has evolved to specialize within a range of depth due to the ease of horizontal gene transfer and also due to the fact that many enzyme orthologs evolved over time to maximize efficiency given a specific habitat and redox conditions (10).
+ 
+This ability of bacteria to capitalize on niche conditions leads to the evolution of the collective habitat (ie. the Saanich Inlet water column) into an optimized production line of substrate. This phenomenon is seen in the overall denitrification pathway in Saanich Inlet. The functions involved in this production line, are distributed on an enzymatic level and also on an organismal level. This distribution scheme is a natural, and particularly a microbial, adaptation that ensures the systems in place are evolutionarily robust. Distributing these functions amongst many different taxa causes a buffering effect in the event of changing conditions. Even if some groups fail, the metabolic function will be conserved in others and the overall pathway will not be disrupted. This microbial resilience is particularly necessary for, and evolved for the purpose of, survival during events like the annual oxic/anoxic shifts of Saanich Inlet.
+ 
+This metabolic distribution is also necessary with the variation of redox conditions throughout the water column. In deeper, increasingly anoxic environment, there are fewer strong terminal electron acceptors available due to consumption higher in the water column. Those microorganisms living deep in the water column must survive on what is available, and increase their chance of survival by sharing specialized functions among the community through horizontal gene transfer. Overall, the environmental and nutritional pressures brought about by the shifting chemical makeup of the Saanich Inlet water column has led to the diversification and distribution of these key denitrification enzymes.
+ 
+Further elucidation of the need for distributed metabolism would require the analyses detailed in the paper to be performed throughout the seasons. This would allow the determination of the patterns of expression throughout the year, particularly between the oxic and anoxic months deep within the water column. Analyses could be used to determine any changes in the expression of denitrification genes as well as overall changes in the bacterial taxa abundance, and results could answer the question of whether less well-adapted populations die out with more specialized populations dominating during specific times of year. 
+ 
+**Future directions**
+The use of nosZ gene abundance and expression can serve as an important indicator of N~2~O emission and mitigation potentials due to the harmful effects of N~2~O. Research conducted by Sanford et al. has revealed discrepancies between nosZ expression and N~2~O emissions (11). However, further analysis has revealed the presence of uncharacterized or atypical nosZ genes that express a functional NosZ fully capable of reducing N~2~O (11). This introduces new links to the nitrogen cycle because the uncharacterized nosZ genes demonstrate that the reduction of N~2~O is not solely exclusive to denitrifying bacteria. An understanding of both denitrifier and non-denitrifiers can improve the accuracy of methods used to assess N~2~O emission and to create more practical N~2~O emission models.
+
+### References
+1.	Pierce J, He J, Dang Z, Shao V, Beskrovnaya P, Wong CK. 2018. Mothur and QIIME2 analysis of 16S rRNA of Oceanospirillaceae isolated from Saanich Inlet. MICB425. Term 2. Project 1. Team 7.
+
+2.	Tiedje JM. 1988. Ecology of denitrification and dissimilatory nitrate reduction to ammonium, p. 179-243. In A. J. B. Zehnder (ed.), Biology of anaerobic microorganisms. in press. John Wiley & Sons, New York, N.Y. 
+
+3.	Rich JJ, Heichen RS,Bottomley PJ, Cromack K, Myrold DD. 2003. Community composition and functioning of denitrifying bacteria from adjacent meadow and forest soils. Appl. Environ. Microbiol. **69**:5974-5982. 
+
+4.	Henry S, Bru D, Stres B, Hallet S, Philippot L. 2006. Quantitative Detection of the nosZ Gene, Encoding Nitrous Oxide Reductase, and Comparison of the Abundances of 16S rRNA, narG, nirK, and nosZ Genes in Soils. Applied and Environmental Microbiology. **72**(8):5181–5189. 
+
+5.	Scala DJ, Kerkhof LJ.1999. Diversity of Nitrous Oxide Reductase (nosZ) Genes in Continental Shelf Sediments. Applied and Environmental Microbiology. **65**(4):1681–1687. 
+
+6.	Horn MA, Drake HL, Schramm A. 2006. Nitrous Oxide Reductase Genes (nosZ) of Denitrifying Microbial Populations in Soil and the Earthworm Gut Are Phylogenetically Similar. Applied and Environmental Microbiology, **72**(2):1019–1026. 
+
+7.	Lin X, Kennedy D, Peacock A, Mckinley J, Resch CT, Fredrickson J, Konopka A. 2011. Distribution of Microbial Biomass and Potential for Anaerobic Respiration in Hanford Site 300 Area Subsurface Sediment. Applied and Environmental Microbiology. **78**(3):759-767. 
+
+8. Dill-MacFarland K, Hallam S. 2018. MICB425 Project 2: Charting the distributed nitrogen cycle. Project 2 instructions for course MICB425. University of British Columbia, Vancouver, BC.
+
+9. Letunic I and Bork P. 2016. Nucleic Acids. Interactive Tree Of Life (iTOL) v3: an online tool for the display and annotation of phylogenetic and other trees. Nucleic Acids Res doi: 10.1093/nar/gkr201
+
+10. Paul G. Falkowski, Tom Fenchel, Edward F. Delong. 2008. The Microbial Engines That Drive Earth's Biogeochemical Cycles. Science. 320:1034-1039. doi: 10.1126/science.1153213. 
+
+11. Sanford RA, Wagner DD, Wu QZ, Chee-Sanford JC, Thomas SH, Cruz-Garcia C, Rodriguez G, Massol-Deya A, Krishnani KK, Ritalahti KM, Nissen S, Konstantinidis KT, and Loffler FE. 2012. Unexpected nondenitrifier nitrous oxide reductase gene diversity and abundance in soils, P. Natl. Acad.Sci. 109:19709–19714.
+
